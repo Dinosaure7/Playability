@@ -1,28 +1,31 @@
 version: "3.8"
-
 services:
   # SERVICE DASH
   dash:
     build: ./data-dash
     ports:
       - "8050:8050"
-
-  # SERVICE FASTAPI 
+  # SERVICE FASTAPI
   fastapi:
     build: ./data-fastapi
     ports:
       - "8000:8000"
-
-  # SERVICE STREAMLIT 
+  # SERVICE STREAMLIT
   streamlit:
     build: ./data-streamlit
     ports:
       - "8501:8501"
-
-  # SERVICE REACT    
+  # SERVICE REACT
   react:
-    build: ./dev-react
+    build:
+      context: ./dev-react
+      dockerfile: Dockerfile
     ports:
-      - 8080:8080
+      - "8080:8080"
+    volumes:
+      - ./dev-react:/app            # Monte le répertoire de travail local dans le conteneur
+      - /app/node_modules           # Préserve les node_modules du conteneur
     environment:
-      NODE_ENV: development      
+      - CHOKIDAR_USEPOLLING=true
+      - HOST=0.0.0.0
+    command: npm run dev
