@@ -23,6 +23,9 @@
 }
 
 * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: var(--font-content);
 }
 
@@ -32,4 +35,11 @@ h1 {
 
 h2 {
   font-family: var(--font-title);
+}
+
+body {
+  background-image: url("/src/assets/background.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100vh;
 }
