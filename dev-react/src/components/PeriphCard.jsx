@@ -11,10 +11,14 @@ function PeriphCard() {
         />
         <div className="flex flex-col justify-between">
           <div className="p-4 md:p-5 block m-auto">
-            <p className="text-gray-800 font-bold text-xl md:text-2xl">Manette Access</p>
+            <p className="text-gray-800 font-bold text-xl md:text-2xl">
+              Access Controller
+            </p>
             <p className="text-gray-700 md:text-lg">
-              Créez de nouvelles façons jouer avec un kit pour manette
-              PlayStation®5 hautement personnalisable, conçu pour aider...
+              The Access Controller is a highly customizable controller kit
+              designed to help players with disabilities play more comfortably
+              and for longer periods on the PlayStation 5. It offers features
+              such as...
             </p>
           </div>
           <div className="p-4 md:p-5 shadow-top bg-gray-100">
@@ -22,7 +26,7 @@ function PeriphCard() {
               <div>
                 <div className="text-lg text-gray-700">
                   <span className="text-gray-900 font-bold">
-                    Note globale d'accessibilité
+                  Overall accessibility score
                   </span>
                 </div>
                 <div className="flex items-center">
@@ -65,13 +69,13 @@ function PeriphCard() {
                     </svg>
                   </div>
                   <div className="text-gray-600 ml-2 text-sm md:text-base mt-1">
-                    28 notes
+                    28 reviews
                   </div>
                 </div>
               </div>
               <Link to="/periphList/:id">
                 <button className="mt-3 sm:mt-0 py-2 px-5 md:py-3 md:px-6 bg-[var(--primary-color)] hover:bg-[var(--primary-hover-color)] font-bold text-white md:text-lg rounded-lg shadow-md">
-                  Voir plus
+                  See more
                 </button>
               </Link>
             </div>

@@ -28,7 +28,7 @@ function NavBar() {
               to="/"
               class="no-underline text-[var(--white-color)] opacity-100 text-1.5xl md:text-lg font-light md:font-normal transition-text duration-200 hover:text-[var(--primary-color)]"
             >
-              Accueil
+              Home
             </Link>
           </li>
           <li class="py-[10px] delay-2000">
@@ -36,7 +36,7 @@ function NavBar() {
               to="/gameList"
               class="no-underline text-[var(--white-color)] opacity-100 text-1.5xl md:text-lg font-light md:font-normal transition-text duration-200 hover:text-[var(--primary-color)]"
             >
-              Liste des jeux
+              Game list
             </Link>
           </li>
           <li class="py-[10px] delay-2000">
@@ -44,7 +44,7 @@ function NavBar() {
               to="/periphList"
               class="no-underline text-[var(--white-color)] opacity-100 text-1.5xl md:text-lg font-light md:font-normal transition-text duration-200 hover:text-[var(--primary-color)]"
             >
-              Liste des périphériques
+              Peripherals list
             </Link>
           </li>
           <li class="py-[10px] delay-2000">
