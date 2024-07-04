@@ -10,22 +10,20 @@ function GameCard() {
           src="https://static.actugaming.net/media/2016/02/rainbow-six-siege-jaquette.jpg"
         />
         <div className="flex flex-col justify-between">
-          <div className="p-4 md:p-5 block m-auto">
-            <p className="font-bold text-xl md:text-2xl">Rainbow Six Siege</p>
-            <p className="text-gray-700 md:text-lg">
-              Maîtrisez l'art de la destruction et des gadgets dans Tom Clancy's
-              Rainbow Six Siege. Découvrez d'intenses combats rapprochés, ...
-            </p>
-          </div>
+          <>Rainbow Six Siege. Découvrez d'intenses combats rapprochés, ...</>
+        </div>
+        <div className="p-4 md:p-5 bg-gray-100">
           <div className="p-4 md:p-5 shadow-top bg-gray-100">
             <div className="sm:flex sm:justify-between sm:items-center">
               <div>
                 <div className="text-lg text-gray-700">
+                  <span className="text-gray-900 font-bold">
+                    Note globale d'accessibilité
+                  </span>
                   <span className="text-gray-900 font-bold">Note globale</span>
                 </div>
                 <div className="flex items-center">
                   <div className="inline-flex -mx-px">
-                    {/* Les étoiles */}
                     <svg
                       className="w-4 h-4 mx-px fill-current text-[var(--primary-color)]"
                       xmlns="http://www.w3.org/2000/svg"
@@ -73,9 +71,7 @@ function GameCard() {
                 </button>
               </Link>
             </div>
-            <div className="mt-3 text-gray-600 text-sm md:text-base">
-              {/* *Prices may vary depending on selected date. */}
-            </div>
+            <div className="mt-3 text-gray-600 text-sm md:text-base"></div>
           </div>
         </div>
       </div>
