@@ -11,7 +11,7 @@ function PeriphCard() {
         />
         <div className="flex flex-col justify-between">
           <div className="p-4 md:p-5 block m-auto">
-            <p className="font-bold text-xl md:text-2xl">Manette Access</p>
+            <p className="text-gray-800 font-bold text-xl md:text-2xl">Manette Access</p>
             <p className="text-gray-700 md:text-lg">
               Créez de nouvelles façons jouer avec un kit pour manette
               PlayStation®5 hautement personnalisable, conçu pour aider...

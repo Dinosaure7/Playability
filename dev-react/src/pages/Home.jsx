@@ -12,11 +12,10 @@ function Home() {
       <h2 className="text-xl md:ml-16 md:text-4xl text-[var(--white-color)] font-medium m-5">
         Découvrez les notes de nos experts en accessibilité et inclusivité
       </h2>
-      <section className="flex flex-wrap justify-center mb-10">
-        <GameCard />
-        <GameCard />
-        <GameCard />
-        <GameCard />
+      <section className="flex flex-wrap justify-center">
+        {gamesData.map((gameData) => (
+          <GameCard gameData={gameData} />
+        ))}
       </section>
       <Link
         to="/gameList"

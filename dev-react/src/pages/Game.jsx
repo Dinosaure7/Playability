@@ -1,7 +1,11 @@
+import { useParams } from "react-router-dom";
 import CardComment from "../components/CardComment";
 import Return from "../components/Return";
 
 function Game() {
+  const { id } = useParams();
+  console.log(id);
+
   return (
     <main>
       <div className="my-5 ml-10">

@@ -24,3 +24,20 @@ export async function sendData(url, data, http) {
     return null;
   }
 }
+
+export async function fetchApi2(urls) {
+  try {
+    const responses = await Promise.all(
+      urls.map((url) => fetch(import.meta.env.VITE_API_URL + url))
+    );
+
+    const jsonDatas = await Promise.all(
+      responses.map((response) => response.json())
+    );
+
+    return jsonDatas;
+  } catch (error) {
+    console.error("Erreur lors de la récupération des données :", error);
+    return null;
+  }
+}
