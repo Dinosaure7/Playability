@@ -1,15 +1,15 @@
 import { useLoaderData } from "react-router-dom";
 
 function GameList() {
-  const games = useLoaderData
+  const games = useLoaderData;
   return (
-<main>
-<section className="flex flex-wrap justify-center mb-10">
-{offers.map((offer) => (
+    <main>
+      <section className="flex flex-wrap justify-center mb-10">
+        {games.map((game) => (
           <GameCard />
         ))}
       </section>
-</main>
+    </main>
   );
 }
 
