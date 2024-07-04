@@ -7,11 +7,11 @@ function NavBar() {
       >
         <input
           type="checkbox"
-          class="absolute w-10 h-8 opacity-0 cursor-pointer z-20"
+          class="md:hidden absolute w-10 h-8 opacity-0 cursor-pointer z-20"
         />
-        <span class="z-30 block w-7 h-0.5 mb-1.5 bg-[var(--nuance3-secondary)] rounded-[3px] origin-[5px_0px] transition-transform duration-500 ease-in-out"></span>
-        <span class="z-30 block w-7 h-0.5 mb-1.5 bg-[var(--nuance3-secondary)] rounded-[3px] origin-[0%_0%] transition-transform duration-500 ease-in-out"></span>
-        <span class="z-30 block w-7 h-0.5 mb-1.5 bg-[var(--nuance3-secondary)] rounded-[3px] origin-[0%_100%] transition-transform duration-500 ease-in-out"></span>
+        <span class="md:hidden z-30 block w-7 h-0.5 mb-1.5 bg-[var(--nuance3-secondary)] rounded-[3px] origin-[5px_0px] transition-transform duration-500 ease-in-out"></span>
+        <span class="md:hidden z-30 block w-7 h-0.5 mb-1.5 bg-[var(--nuance3-secondary)] rounded-[3px] origin-[0%_0%] transition-transform duration-500 ease-in-out"></span>
+        <span class="md:hidden z-30 block w-7 h-0.5 mb-1.5 bg-[var(--nuance3-secondary)] rounded-[3px] origin-[0%_100%] transition-transform duration-500 ease-in-out"></span>
         <img
           className="w-10 absolute right-12"
           src="/src/assets/logoPlayAbilityGreen.svg"
