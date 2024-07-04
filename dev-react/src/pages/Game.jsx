@@ -1,7 +1,11 @@
+import { useParams } from "react-router-dom";
 import CardComment from "../components/CardComment";
 import Return from "../components/Return";
 
 function Game() {
+  const { id } = useParams();
+  console.log(id);
+
   return (
     <main>
       <div className="my-5 ml-10">
@@ -85,6 +89,7 @@ function Game() {
         </div>
       </section>
       <div className="mb-10 px-10 mt-10 flex gap-8 overflow-x-scroll no-scrollbar">
+        <CardComment />
         <CardComment />
         <CardComment />
       </div>

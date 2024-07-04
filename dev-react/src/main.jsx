@@ -14,10 +14,12 @@ import Periph from "./pages/Periph";
 import Privacy from "./pages/Privacy";
 import ContactPage from "./pages/ContactPage";
 
-import { fetchApi } from "./service/api.service";
+import { fetchApi, fetchApi2 } from "./service/api.service";
 import ErrorPage from "./pages/ErrorPage";
 
 const id = 1091;
+const ids = [1091, 1, 2];
+const gameInfosUrls = ids.map((id) => `/game/${id}`);
 
 const homeUrl = `/`;
 const gamesNameUrl = `/game`;
@@ -38,14 +40,19 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetchApi(gameInfosUrl),
+        loader: () => fetchApi2(gameInfosUrls),
       },
       {
         path: "/gameList",
         element: <GameList />,
+        loader: () => fetchApi(gamesNameUrl),
       },
       {
         path: "/game",
+        element: <Game />,
+      },
+      {
+        path: "/game/:id",
         element: <Game />,
       },
       {

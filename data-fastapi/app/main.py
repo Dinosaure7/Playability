@@ -5,6 +5,8 @@ from sklearn.neighbors import NearestNeighbors
 import pandas as pd
 import json
 
+from sklearn.neighbors import NearestNeighbors
+
 app = FastAPI(docs_url = "/documentation")
 
 # -------------------------------------------------   CONFIGURATION CORS   ------------------------------------------------------

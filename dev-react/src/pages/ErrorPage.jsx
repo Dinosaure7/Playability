@@ -7,7 +7,7 @@ function ErrorPage() {
       <header>
         <NavBar />
       </header>
-      <section class="absolute inset-0 flex flex-col justify-center items-center">
+      <section className="absolute inset-0 flex flex-col justify-center items-center">
         <h1 className="text-9xl font-extrabold text-white tracking-widest">
           404
         </h1>
