@@ -5,6 +5,8 @@ from fastapi.middleware.cors import CORSMiddleware
 import pandas as pd
 import json
 
+from sklearn.neighbors import NearestNeighbors
+
 app = FastAPI(docs_url = "/documentation")
 
 # -------------------------------------------------   CONFIGURATION CORS   ------------------------------------------------------
@@ -24,7 +26,10 @@ app.add_middleware(
 # -------  INSERER VOTRE CODE ICI -----------------
 csv_path = 'app/game_df_detailed_v2.csv'
 
-game_df = pd.read_csv(csv_path, index_col = "Unnamed: 0")
+game_df = pd.read_csv(csv_path)
+                    #   , index_col = "Unnamed: 0")
+                    
+game_df.drop("Unnamed: 0", axis = 1, inplace = True)
 
 json_game = game_df.loc[:, :"Video"].to_json(orient = "index")
 json_game = json.loads(json_game)
@@ -87,19 +92,34 @@ def fn_game_video(ind):
     id_string = str(ind)
     return json_game[id_string]["Video"]
 
-# @app.get('/recommandation/{ind}')
-# def recommande_game(ind):
-#     dict_game = {}
-#     X = game_df.drop(['Game','Summary','Rating','Genres','Platforms','Companies','Cover','Video'],axis=1)
-#     knn = NearestNeighbors(n_neighbors=4)
-#     knn.fit(X)
-#     distances, indices = knn.kneighbors(X)
-#     for i in range(len(X)):
-#         index_list = indices[ind][1:]
-#         dict_game['game 1'] = index_list[0]
-#         dict_game['game 2'] = index_list[1]
-#         dict_game['game 3'] = index_list[2]
-#     return {dict_game}
+# Get the global note of a specific id
+@app.get('/note_acc/{ind}')
+def fn_game_note_acc(ind):
+    id_string = str(ind)
+    return json_game[id_string]["Total"]
+
+# Get all info of a specific id
+@app.get('/game/{ind}')
+def fn_game_full(ind):
+    id_string = str(ind)
+    return json_game[id_string]
+
+@app.get('/recommandation/{ind}')
+def reco_game(ind):
+    dict_game = {}
+    
+    X = game_df.drop(['Game','Summary','Rating','Genres','Platforms','Companies','Cover','Video'],axis=1)
+    knn = NearestNeighbors(n_neighbors=4)
+    
+    knn.fit(X)
+    distances, indices = knn.kneighbors(X)
+    
+    for i in range(len(X)):
+        index_list = indices[int(ind)][1:]
+        dict_game['game1'] = index_list[0]
+        dict_game['game2'] = index_list[1]
+        dict_game['game3'] = index_list[2]
+    return dict_game
 
 # ---------------- FIN DE TON CODE ----------------
 
