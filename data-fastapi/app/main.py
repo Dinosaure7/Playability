@@ -97,6 +97,19 @@ def fn_game_video(ind):
 
 @app.get('/recommandation/{ind}')
 def recommande_game(ind):
+    import json
+    import numpy as np
+
+    class NpEncoder(json.JSONEncoder):
+        def default(self, obj):
+            if isinstance(obj, np.integer):
+                return int(obj)
+            if isinstance(obj, np.floating):
+                return float(obj)
+            if isinstance(obj, np.ndarray):
+                return obj.tolist()
+            return super(NpEncoder, self).default(obj)
+
     dict_game = {}
     X = game_df.drop(['Game','Summary','Rating','Genres','Platforms','Companies','Cover','Video'],axis=1)
     knn = NearestNeighbors(n_neighbors=4)
@@ -107,7 +120,11 @@ def recommande_game(ind):
         dict_game['game 1'] = index_list[0]
         dict_game['game 2'] = index_list[1]
         dict_game['game 3'] = index_list[2]
-    return {dict_game}
+
+    json_game = json.dumps(dict_game, cls=NpEncoder)
+                           
+    
+    return  json_game
 
 # ---------------- FIN DE TON CODE ----------------
 
