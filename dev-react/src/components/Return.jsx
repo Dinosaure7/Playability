@@ -9,7 +9,7 @@ function Return() {
 
   return (
     <button onClick={handleReturnClick}>
-      <img className="w-6" src="/src/assets/return.svg" />
+      <img className="w-6 md:w-8" src="/src/assets/return.svg" />
     </button>
   );
 }
