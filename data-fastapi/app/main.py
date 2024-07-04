@@ -24,8 +24,7 @@ app.add_middleware(
 )
 
 # -------  INSERER VOTRE CODE ICI -----------------
-csv_path = 'app/game_df_detailed_v2.csv'
-
+csv_path = 'app/game_df_detailed_v3.csv'
 game_df = pd.read_csv(csv_path)
 game_df["Unnamed: 0"] = game_df.index
 game_df.rename(columns = {"Unnamed: 0": "ID"}, inplace = True)
