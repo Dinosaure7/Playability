@@ -5,8 +5,7 @@ import PeriphCard from "../components/PeriphCard";
 
 function Home() {
   const gamesData = useLoaderData();
-  console.log(gamesData);
-
+  console.log(gamesData)
   return (
     <>
       <h2 className="text-xl md:ml-16 md:text-4xl text-[var(--white-color)] font-medium m-5">
