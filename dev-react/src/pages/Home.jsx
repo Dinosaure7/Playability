@@ -11,21 +11,27 @@ function Home() {
   const gamesData = useLoaderData();
   return (
     <>
-      <section className="mb-20 shadow w-screen h-screen bg-cover flex flex-col gap-20 justify-center items-center cover-home1">
-        <h1 className="text-5xl md:text-8xl text-shadow">PlayAbility</h1>
-        <div className="flex flex-col gap-10">
-          <p className="font-light md:text-2xl mx-20 text-shadow">
-            Will you find The right video game for you?
-          </p>
-          <Link to="/gameList" onClick={scrollToTop} className="self-center bg-[var(--primary-color)] text-[var(--white-color)] text-center font-normal w-40 md:w-64 hover:bg-[var(--primary-hover-color)] transition-all ease-in-out text-sm p-2 md:p-5 md:text-xl rounded-xl">
-            Discover accessible games
-          </Link>
+      <section className="mb-20 shadow w-screen h-screen bg-cover cover-home1">
+        <div className="backdrop-blur-sm flex flex-col gap-20 justify-center items-center w-screen h-screen">
+          <h1 className="text-5xl md:text-8xl text-shadow">PlayAbility</h1>
+          <div className="flex flex-col gap-10">
+            <p className="font-normal md:text-2xl mx-20 drop-shadow-[0px_0px_3px_var(--secondary-color)] text-[var(--white-color)]">
+              Will you find The right video game for you ?
+            </p>
+            <Link
+              to="/gameList"
+              onClick={scrollToTop}
+              className="self-center bg-[var(--primary-color)] text-[var(--white-color)] text-center font-normal w-46 md:w-72 hover:bg-[var(--primary-hover-color)] transition-all ease-in-out text-sm p-4 md:p-5 md:text-xl rounded-xl"
+            >
+              Discover accessible games
+            </Link>
+          </div>
+          <img
+            className="w-7 mt-5 self-center animate-bounce"
+            src="/src/assets/arrow-bottom.svg"
+            alt=""
+          />
         </div>
-        <img
-          className="w-7 mt-5 self-center animate-bounce"
-          src="/src/assets/arrow-bottom.svg"
-          alt=""
-        />
       </section>
       <h2 className="text-xl md:ml-16 md:text-4xl text-[var(--white-color)] mb-10 font-medium m-5">
         Discover our accessibility and inclusiveness expert's notes
@@ -36,7 +42,7 @@ function Home() {
         ))}
       </section>
       <Link
-      onClick={scrollToTop}
+        onClick={scrollToTop}
         to="/gameList"
         className="text-[var(--white-color)] flex gap-2 mb-12 md:mb-28 justify-end underline md:text-xl mr-10 md:mr-14 hover:text-[var(--primary-color)]"
       >
@@ -52,7 +58,8 @@ function Home() {
         <PeriphCard />
         <PeriphCard />
       </section>
-      <Link onClick={scrollToTop}
+      <Link
+        onClick={scrollToTop}
         to="/periphList"
         className="text-[var(--white-color)] flex gap-2 mb-16 md:mb-28 justify-end underline md:text-xl mr-10 md:mr-14 hover:text-[var(--primary-color)]"
       >

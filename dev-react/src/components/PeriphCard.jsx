@@ -35,7 +35,6 @@ function PeriphCard() {
                 </div>
                 <div className="flex items-center">
                   <div className="inline-flex -mx-px">
-                    {/* Les étoiles */}
                     <svg
                       className="w-4 h-4 mx-px fill-current text-[var(--primary-color)]"
                       xmlns="http://www.w3.org/2000/svg"
