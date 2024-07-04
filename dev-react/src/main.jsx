@@ -14,6 +14,9 @@ import Periph from "./pages/Periph";
 import Privacy from "./pages/Privacy";
 import ContactPage from "./pages/ContactPage";
 
+import { fetchApi } from "./service/api.service";
+
+
 const router = createBrowserRouter([
   {
     element: <App />,
@@ -21,6 +24,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+        loader: () => fetchApi(""),
       },
       {
         path: "/gameList",
