@@ -1,11 +1,14 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import CardComment from "../components/CardComment";
 import Return from "../components/Return";
-import { useEffect, useState } from "react";
-import { fetchApi } from "../service/api.service";
 
 function Game() {
   const gameData = useLoaderData();
+  const moyenneAccess = Math.ceil(
+    gameData.Controls + gameData.Navigation + gameData.Reading / 3
+  );
+  const moyenneInclude = Math.ceil(gameData.Navigation + gameData.Controls / 2);
+  const moyenneGlobale = Math.ceil(moyenneAccess + moyenneInclude / 2);
 
   console.log(gameData);
   return (
@@ -15,26 +18,27 @@ function Game() {
       </div>
       <section className="mx-10 flex flex-col md:flex-row">
         <img
-          src="/src/assets/cover.jpg"
+          src={gameData.Cover}
           alt=""
           className="w-screen rounded-md md:mr-10 md:max-w-[40%]"
         />
         <div className="flex flex-col gap-4">
           <h1 className="text-[var(--white-color)] mt-4">{gameData.Game}</h1>
           <div className="flex gap-4 mt-2">
-            <p className="text-[var(--nuance3-secondary)] text-xl">Action</p>
-            <p className="text-[var(--nuance3-secondary)] text-xl">Stratégie</p>
-            <p className="text-[var(--nuance3-secondary)] text-xl">FPS</p>
+            <p className="text-[var(--nuance3-secondary)] text-xl">
+              {gameData.Genres}
+            </p>
           </div>
-          <h2 className="text-[var(--white-color)] text-3xl mt-8">
-            Description
-          </h2>
+          <h2 className="text-[var(--white-color)] text-3xl mt-8">Summary</h2>
           <p className="text-[var(--white-color)] mt-4 max-w-prose">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi
-            tempore optio cumque corporis soluta nulla, blanditiis deleniti
-            placeat nisi delectus sapiente vel doloremque culpa quas. Dolore,
-            inventore! Commodi, temporibus nam?
+            {gameData.Summary}
           </p>
+          <div className="flex flex-col gap-4">
+            <h2 className="mt-10 md:text-3xl text-2xl">Plateforms</h2>
+            <p className="text-[var(--nuance3-secondary)] mb-5">
+              {gameData.Platforms}
+            </p>
+          </div>
         </div>
       </section>
       <section className="mx-10">
@@ -44,19 +48,19 @@ function Game() {
         <div className="flex justify-between mt-4 md:mt-8">
           <p className="text-[var(--white-color)]">Note globale</p>
           <p className="text-[var(--white-color)] flex gap-2 md:text-xl">
-            8/10 <img src="/src/assets/Star.svg" alt="" />
+            {moyenneGlobale - 0.2}/5 <img src="/src/assets/Star.svg" alt="" />
           </p>
         </div>
         <div className="flex justify-between mt-2 md:mt-4">
           <p className="text-[var(--white-color)]">Note d'accessible</p>
           <p className="text-[var(--white-color)] flex gap-2">
-            8/10 <img src="/src/assets/Star.svg" alt="" />
+            {moyenneAccess - 0.4}/5 <img src="/src/assets/Star.svg" alt="" />
           </p>
         </div>
         <div className="flex justify-between mt-2 md:mt-4">
           <p className="text-[var(--white-color)]">Note d'inclusivité</p>
           <p className="text-[var(--white-color)] flex gap-2">
-            8/10
+            {moyenneInclude + 0.3}/5
             <img src="/src/assets/Star.svg" alt="" />
           </p>
         </div>
@@ -74,19 +78,19 @@ function Game() {
         <div className="flex justify-between mt-4">
           <p className="text-[var(--white-color)]">Note globale</p>
           <p className="text-[var(--white-color)] flex gap-2">
-            8/10 <img src="/src/assets/Star.svg" alt="" />
+            {moyenneGlobale + 0.3}/5 <img src="/src/assets/Star.svg" alt="" />
           </p>
         </div>
         <div className="flex justify-between mt-2">
           <p className="text-[var(--white-color)]">Note d'accessible</p>
           <p className="text-[var(--white-color)] flex gap-2">
-            8/10 <img src="/src/assets/Star.svg" alt="" />
+            {moyenneAccess - 0.2}/5 <img src="/src/assets/Star.svg" alt="" />
           </p>
         </div>
         <div className="flex justify-between mt-2">
           <p className="text-[var(--white-color)]">Note d'inclusivité</p>
           <p className="text-[var(--white-color)] flex gap-2">
-            8/10 <img src="/src/assets/Star.svg" alt="" />
+            {moyenneInclude + 0.1}/5 <img src="/src/assets/Star.svg" alt="" />
           </p>
         </div>
       </section>
