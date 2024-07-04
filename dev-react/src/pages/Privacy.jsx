@@ -1,7 +1,6 @@
 function Privacy() {
     return (
         <div className="p-4">
-          <h1>coucou</h1>
         <h1 className="text-3xl font-bold mb-4">Politique de Confidentialité</h1>
         <p>Dernière mise à jour : [04/07/2024]</p>
   

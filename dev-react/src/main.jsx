@@ -15,16 +15,30 @@ import Privacy from "./pages/Privacy";
 import ContactPage from "./pages/ContactPage";
 
 import { fetchApi } from "./service/api.service";
+import ErrorPage from "./pages/ErrorPage";
 
+const id = 1091;
+
+const homeUrl = `/`;
+const gamesNameUrl = `/game`;
+const gameInfosUrl = `/game/${id}`;
+const gameSummaryUrl = `/summary/${id}`;
+const gameRatingUrl = `/rating/${id}`;
+const gameGenresUrl = `/genres/${id}`;
+const gamePlatformsUrl = `/platforms/${id}`;
+const gameCompaniesUrl = `/companies/${id}`;
+const gameCoverUrl = `/cover/${id}`;
+const gameVideoUrl = `/video/${id}`;
 
 const router = createBrowserRouter([
   {
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
         element: <Home />,
-        loader: () => fetchApi(""),
+        loader: () => fetchApi(gameInfosUrl),
       },
       {
         path: "/gameList",
@@ -42,9 +56,9 @@ const router = createBrowserRouter([
         path: "/periphList/:id",
         element: <Periph />,
       },
-      { 
+      {
         path: "/privacy",
-        element: <Privacy />
+        element: <Privacy />,
       },
       {
         path: "/contact",
