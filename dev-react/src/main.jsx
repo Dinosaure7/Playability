@@ -18,7 +18,7 @@ import { fetchApi, fetchApi2 } from "./service/api.service";
 import ErrorPage from "./pages/ErrorPage";
 
 const id = 1091;
-const ids = [1091, 1, 2];
+const ids = [33, 161, 168, 290, 871, 1091];
 const gameInfosUrls = ids.map((id) => `/game/${id}`);
 
 const homeUrl = `/`;
