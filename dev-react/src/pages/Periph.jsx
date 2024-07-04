@@ -1,8 +1,5 @@
-
 function Periph() {
-  return (
-    <div>Periph</div>
-  )
+  return <h1>Perih</h1>;
 }
 
-export default Periph
+export default Periph;
