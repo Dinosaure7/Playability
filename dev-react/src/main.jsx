@@ -35,7 +35,7 @@ const gameVideoUrl = `/video/${id}`;
 const router = createBrowserRouter([
   {
     element: <App />,
-    errorElement: <ErrorPage />,
+
     children: [
       {
         path: "/",
@@ -45,7 +45,7 @@ const router = createBrowserRouter([
       {
         path: "/gameList",
         element: <GameList />,
-        loader: () => fetchApi(gamesNameUrl),
+        loader: () => fetchApi2(gameInfosUrls),
       },
       {
         path: "/game/:id",

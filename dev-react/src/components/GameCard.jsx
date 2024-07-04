@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function GameCard(gameData = {gameData}) {
-  const { Cover } = gameData.gameData;
+function GameCard({ gameData }) {
+  const { Cover } = gameData;
   console.log(Cover);
+
   return (
     <div className="max-w-md md:max-w-2xl px-5 my-5">
       <div className="bg-white shadow-xl rounded-lg overflow-hidden flex flex-col md:flex-row">
@@ -13,7 +14,9 @@ function GameCard(gameData = {gameData}) {
         />
         <div className="flex flex-col justify-between">
           <div className="p-4 md:p-5 block m-auto">
-            <p className="text-gray-800 font-bold text-xl md:text-2xl">Rainbow Six Siege</p>
+            <p className="text-gray-800 font-bold text-xl md:text-2xl">
+              Rainbow Six Siege
+            </p>
             <p className="text-gray-700 md:text-lg">
               Maîtrisez l'art de la destruction et des gadgets dans Tom Clancy's
               Rainbow Six Siege. Découvrez d'intenses combats rapprochés, ...
@@ -76,8 +79,7 @@ function GameCard(gameData = {gameData}) {
                 </button>
               </Link>
             </div>
-            <div className="mt-3 text-gray-600 text-sm md:text-base">
-            </div>
+            <div className="mt-3 text-gray-600 text-sm md:text-base"></div>
           </div>
         </div>
       </div>

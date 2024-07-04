@@ -14,7 +14,7 @@
 
   /* Primary color */
   --primary-color: #d93f86;
-  --primary-hover-color:#9f2d62;
+  --primary-hover-color: #9f2d62;
 
   /* Secondary colors */
   --secondary-color: #1a213c;
@@ -32,6 +32,18 @@
   }
   .shadow-top {
     @apply shadow-[0_-5px_10px_rgba(0,0,0,0.1)];
+  }
+  .cover-home1 {
+    background-image: url("/src/assets/cover-home.png");
+  }
+  .shadow {
+    box-shadow: inset black 0px 0px 200px 50px;
+  }
+  .shadow1 {
+    box-shadow: inset black 0px 0px 200px 50px;
+  }
+  .text-shadow {
+    text-shadow: black 0px 0px 10px 10px;
   }
 }
 
@@ -67,6 +79,10 @@ h1 {
   font-size: 1.5rem;
   font-weight: 500;
   color: var(--white-color);
+}
+
+button {
+  font-family: var(--font-title);
 }
 
 h2 {
