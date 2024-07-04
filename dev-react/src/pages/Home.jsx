@@ -13,7 +13,10 @@ function Home() {
           <p className="font-light md:text-2xl mx-20 text-shadow">
             Trouverez vous Le jeu-vidéo adapté à vous ?
           </p>
-          <Link className="self-center bg-[var(--primary-color)] text-[var(--white-color)] text-center font-normal w-40 md:w-64 hover:bg-[var(--primary-hover-color)] transition-all ease-in-out text-sm p-2 md:p-5 md:text-xl rounded-xl">
+          <Link
+            to="/gameList"
+            className="self-center bg-[var(--primary-color)] text-[var(--white-color)] text-center font-normal w-40 md:w-64 hover:bg-[var(--primary-hover-color)] transition-all ease-in-out text-sm p-2 md:p-5 md:text-xl rounded-xl"
+          >
             Découvrir notre liste
           </Link>
         </div>

@@ -1,10 +1,13 @@
-import { useParams } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import CardComment from "../components/CardComment";
 import Return from "../components/Return";
+import { useEffect, useState } from "react";
+import { fetchApi } from "../service/api.service";
 
 function Game() {
-  const { id } = useParams();
+  const gameData = useLoaderData();
 
+  console.log(gameData);
   return (
     <main>
       <div className="my-5 ml-10">
@@ -17,7 +20,7 @@ function Game() {
           className="w-screen rounded-md md:mr-10 md:max-w-[40%]"
         />
         <div className="flex flex-col gap-4">
-          <h1 className="text-[var(--white-color)] mt-4">Rainbow Six Siege</h1>
+          <h1 className="text-[var(--white-color)] mt-4">{gameData.Game}</h1>
           <div className="flex gap-4 mt-2">
             <p className="text-[var(--nuance3-secondary)] text-xl">Action</p>
             <p className="text-[var(--nuance3-secondary)] text-xl">Stratégie</p>
