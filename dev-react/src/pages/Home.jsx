@@ -1,5 +1,5 @@
-import GameCard from "../components/GameCard/GameCard";
-import PeriphCard from "../components/PeriphCard/PeriphCard";
+import GameCard from "../components/GameCard";
+import PeriphCard from "../components/PeriphCard";
 
 function Home() {
   return (

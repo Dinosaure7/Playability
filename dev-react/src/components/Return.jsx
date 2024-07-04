@@ -1,10 +1,16 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-function Return({link}) {
+function Return() {
+  const navigate = useNavigate();
+
+  const handleReturnClick = () => {
+    navigate(-1);
+  };
+
   return (
-    <Link to={link}>
-      <img className="w-6" src="/src/assets/return.svg" alt="" />
-    </Link>
+    <button onClick={handleReturnClick}>
+      <img className="w-6" src="/src/assets/return.svg" />
+    </button>
   );
 }
 
