@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 
+import { useLoaderData } from "react-router-dom";
 import GameCard from "../components/GameCard";
 import PeriphCard from "../components/PeriphCard";
 
 function Home() {
+  const gamesData = useLoaderData();
+  console.log(gamesData);
   return (
     <>
       <h2 className="text-[var(--white-color)] text-xl md:text-4xl font-medium m-5 md:ml-16">
