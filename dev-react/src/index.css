@@ -1,3 +1,50 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+:root {
+  /* Font family */
+  --font-title: "Raleway", sans-serif;
+  --font-content: "Roboto", sans-serif;
+
+  /* White color */
+  --white-color: #fffafa;
+
+  /* Primary color */
+  --primary-color: #D93F86;
+
+  /* Secondary colors */
+  --secondary-color: #1A213C;
+  --nuance1-secondary: #44318D;
+  --nuance2-secondary: #8265A7;
+  --nuance3-secondary: #A4B3B6;
+
+    /* colors opacity */
+  --primary-color-opacity: rgba(217, 63, 134, 0.5);
+  --nuance2-secondary-opacity: rgba(130, 101, 167, 0.5);
+  --nuance3-secondary-opacity: rgba(164, 179, 182, 0.5); 
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-content);
+}
+
+h1 {
+  font-family: var(--font-title);
+}
+
+h2 {
+  font-family: var(--font-title);
+}
+
+body {
+  background-image: url("/src/assets/background.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100vh;
+}
