@@ -14,14 +14,14 @@ function Footer() {
           to="/privacy"
           className="md:col-span-2 text-blue-600 hover:underline"
         >
-          politique de confidentialité
+          Politique de confidentialité
         </Link>
         <br />
         <a
           href="mailto:fakeemail@example.com"
           className="text-blue-600 hover:underline"
         >
-          contact
+          Contact
         </a>
         <p className="flex justify-center text-center text-black">
           <FaCopyright size={32} />

@@ -17,8 +17,11 @@ import ContactPage from "./pages/ContactPage";
 import { fetchApi } from "./service/api.service";
 import ErrorPage from "./pages/ErrorPage";
 
+const id = 1;
+
 const homeUrl = `/`;
-const gameNameUrl = `/game`;
+const gamesNameUrl = `/game`;
+const gameNameUrl = `/game/${id}`;
 const gameSummaryUrl = `/summary/${id}`;
 const gameRatingUrl = `/rating/${id}`;
 const gameGenresUrl = `/genres/${id}`;
@@ -26,9 +29,6 @@ const gamePlatformsUrl = `/platforms/${id}`;
 const gameCompaniesUrl = `/companies/${id}`;
 const gameCoverUrl = `/cover/${id}`;
 const gameVideoUrl = `/video/${id}`;
-
-const id = 1;
-
 
 const router = createBrowserRouter([
   {
@@ -38,7 +38,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetchApi(""),
+        loader: () => fetchApi(gameNameUrl),
       },
       {
         path: "/gameList",
