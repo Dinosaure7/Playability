@@ -1,8 +1,5 @@
-
 function GameList() {
-  return (
-    <div>GameList</div>
-  )
+  return <div>GameList</div>;
 }
 
-export default GameList
+export default GameList;
