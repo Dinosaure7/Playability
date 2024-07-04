@@ -11,7 +11,6 @@ function App() {
       <main className="w-full">
         <Outlet />
       </main>
-
       <footer>
         <Footer />
       </footer>
