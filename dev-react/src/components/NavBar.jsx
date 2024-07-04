@@ -1,6 +1,16 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 function NavBar() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleLinkClick = () => {
+    setIsOpen(false);
+  };
+
+  const handleCheckboxChange = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <nav class="bg-[#1E1E23] h-[65px]">
       <div
@@ -9,6 +19,8 @@ function NavBar() {
       >
         <input
           type="checkbox"
+          checked={isOpen}
+          onClick={handleCheckboxChange}
           class="md:hidden absolute w-10 ml-5 h-8 opacity-0 cursor-pointer z-20"
         />
         <span class="md:hidden ml-5 z-30 block w-7 h-0.5 mb-1.5 bg-[var(--nuance3-secondary)] rounded-[3px] origin-[5px_0px] transition-transform duration-500 ease-in-out"></span>
@@ -25,6 +37,7 @@ function NavBar() {
         >
           <li class="py-[10px] delay-2000">
             <Link
+            onClick={handleLinkClick}
               to="/"
               class="no-underline text-[var(--white-color)] opacity-100 text-1.5xl md:text-lg font-light md:font-normal transition-text duration-200 hover:text-[var(--primary-color)]"
             >
@@ -34,6 +47,7 @@ function NavBar() {
           <li class="py-[10px] delay-2000">
             <Link
               to="/gameList"
+              onClick={handleLinkClick}
               class="no-underline text-[var(--white-color)] opacity-100 text-1.5xl md:text-lg font-light md:font-normal transition-text duration-200 hover:text-[var(--primary-color)]"
             >
               Liste des jeux
@@ -42,6 +56,7 @@ function NavBar() {
           <li class="py-[10px] delay-2000">
             <Link
               to="/periphList"
+              onClick={handleLinkClick}
               class="no-underline text-[var(--white-color)] opacity-100 text-1.5xl md:text-lg font-light md:font-normal transition-text duration-200 hover:text-[var(--primary-color)]"
             >
               Liste des périphériques
@@ -50,6 +65,7 @@ function NavBar() {
           <li class="py-[10px] delay-2000">
             <Link
               to="/Contact"
+              onClick={handleLinkClick}
               class="no-underline text-[var(--white-color)] opacity-100 md:text-lg text-1.5xl font-light md:font-normal transition-text duration-200 hover:text-[var(--primary-color)]"
             >
               Contact

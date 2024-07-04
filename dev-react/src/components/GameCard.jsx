@@ -23,6 +23,11 @@ function GameCard({ gameData }) {
     () => Math.floor(Math.random() * 100) + 1
   );
 
+  const scrollToTop = window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+
   return (
     <div className="max-w-md md:max-w-2xl px-5 my-5">
       <div className="bg-white shadow-xl rounded-lg overflow-hidden flex flex-col md:flex-row">
@@ -41,7 +46,7 @@ function GameCard({ gameData }) {
           <div className="p-4 md:p-5 shadow-top bg-gray-100">
             <div className="sm:flex sm:justify-between sm:items-center">
               <Rating total={rating} randomNumber={randomNumber} />
-              <Link to={`/gameList/${ID}`}>
+              <Link to={`/gameList/${ID}`} onClick={scrollToTop}>
                 <button className="mt-3 sm:mt-0 py-2 px-5 md:py-3 md:px-6 bg-[var(--primary-color)] transition-all ease-in-out hover:bg-[var(--primary-hover-color)] font-bold text-white md:text-lg rounded-lg shadow-md">
                   Voir plus
                 </button>

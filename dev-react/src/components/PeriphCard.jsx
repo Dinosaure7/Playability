@@ -2,6 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function PeriphCard() {
+  const scrollToTop = window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
   return (
     <div className="max-w-md md:max-w-2xl px-5 my-5">
       <div className="bg-white shadow-xl rounded-lg overflow-hidden flex flex-col md:flex-row">
@@ -11,7 +15,9 @@ function PeriphCard() {
         />
         <div className="flex flex-col justify-between">
           <div className="p-4 md:p-5 block m-auto">
-            <p className="text-gray-800 font-bold text-xl md:text-2xl">Manette Access</p>
+            <p className="text-gray-800 font-bold text-xl md:text-2xl">
+              Manette Access
+            </p>
             <p className="text-gray-700 md:text-lg">
               Créez de nouvelles façons jouer avec un kit pour manette
               PlayStation®5 hautement personnalisable, conçu pour aider...
@@ -69,7 +75,7 @@ function PeriphCard() {
                   </div>
                 </div>
               </div>
-              <Link to="/periphList/:id">
+              <Link onClick={scrollToTop} to="/periphList/:id">
                 <button className="mt-3 sm:mt-0 py-2 px-5 md:py-3 md:px-6 bg-[var(--primary-color)] hover:bg-[var(--primary-hover-color)] font-bold text-white md:text-lg rounded-lg shadow-md">
                   Voir plus
                 </button>
