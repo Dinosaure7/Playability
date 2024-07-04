@@ -5,6 +5,8 @@ from sklearn.neighbors import NearestNeighbors
 import pandas as pd
 import json
 
+from sklearn.neighbors import NearestNeighbors
+
 app = FastAPI(docs_url = "/documentation")
 
 # -------------------------------------------------   CONFIGURATION CORS   ------------------------------------------------------
@@ -22,10 +24,10 @@ app.add_middleware(
 )
 
 # -------  INSERER VOTRE CODE ICI -----------------
-csv_path = 'app/game_df_detailed_v2.csv'
-
+csv_path = 'app/game_df_detailed_v3.csv'
 game_df = pd.read_csv(csv_path)
-game_df.drop(columns="Unnamed: 0", inplace = True)
+game_df["Unnamed: 0"] = game_df.index
+game_df.rename(columns = {"Unnamed: 0": "ID"}, inplace = True)
 
 json_game = game_df.loc[:, :"Video"].to_json(orient = "index")
 json_game = json.loads(json_game)

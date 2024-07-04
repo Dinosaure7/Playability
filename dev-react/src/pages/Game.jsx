@@ -4,12 +4,11 @@ import Return from "../components/Return";
 
 function Game() {
   const { id } = useParams();
-  console.log(id);
 
   return (
     <main>
       <div className="my-5 ml-10">
-        <Return link="/gameList" />
+        <Return />
       </div>
       <section className="mx-10 flex flex-col md:flex-row">
         <img

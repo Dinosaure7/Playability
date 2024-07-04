@@ -5,7 +5,6 @@ import PeriphCard from "../components/PeriphCard";
 
 function Home() {
   const gamesData = useLoaderData();
-
   return (
     <>
       <section className="mb-20 shadow w-screen h-screen bg-cover flex flex-col gap-20 justify-center items-center cover-home1">
