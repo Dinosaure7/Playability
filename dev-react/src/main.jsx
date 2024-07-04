@@ -50,6 +50,7 @@ const router = createBrowserRouter([
       {
         path: "/gameList/:id",
         element: <Game />,
+        loader: ({ params }) => fetchApi(`${gamesNameUrl}/${params.id}`),
       },
       {
         path: "/periphList",
