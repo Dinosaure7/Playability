@@ -49,6 +49,10 @@ const router = createBrowserRouter([
         element: <Game />,
       },
       {
+        path: "/game/:id",
+        element: <Game />,
+      },
+      {
         path: "/periphList",
         element: <PeriphList />,
       },
