@@ -12,6 +12,8 @@ import Game from "./pages/Game";
 import PeriphList from "./pages/PeriphList";
 import Periph from "./pages/Periph";
 import Privacy from "./pages/Privacy";
+import ContactPage from "./pages/ContactPage";
+
 import { fetchApi } from "./service/api.service";
 import ErrorPage from "./pages/ErrorPage";
 
@@ -26,6 +28,7 @@ const gameCoverUrl = `/cover/${id}`;
 const gameVideoUrl = `/video/${id}`;
 
 const id = 1;
+
 
 const router = createBrowserRouter([
   {
@@ -56,6 +59,10 @@ const router = createBrowserRouter([
       {
         path: "/privacy",
         element: <Privacy />,
+      },
+      {
+        path: "/contact",
+        element: <ContactPage />,
       },
     ],
   },

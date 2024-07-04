@@ -1,7 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
+from sklearn.neighbors import NearestNeighbors
 import pandas as pd
 import json
 
@@ -24,7 +24,8 @@ app.add_middleware(
 # -------  INSERER VOTRE CODE ICI -----------------
 csv_path = 'app/game_df_detailed_v2.csv'
 
-game_df = pd.read_csv(csv_path, index_col = "Unnamed: 0")
+game_df = pd.read_csv(csv_path)
+game_df.drop(columns="Unnamed: 0", inplace = True)
 
 json_game = game_df.loc[:, :"Video"].to_json(orient = "index")
 json_game = json.loads(json_game)
@@ -34,6 +35,13 @@ json_game = json.loads(json_game)
 def fn_home():
     
     return json_game
+
+# Page with all the information of the game
+@app.get('/game/{ind}')
+def fn_home(ind):
+    id_string = str(ind)
+    return json_game[id_string]
+
 
 # Page with the id and the name of the game
 @app.get('/game')
@@ -87,19 +95,19 @@ def fn_game_video(ind):
     id_string = str(ind)
     return json_game[id_string]["Video"]
 
-# @app.get('/recommandation/{ind}')
-# def recommande_game(ind):
-#     dict_game = {}
-#     X = game_df.drop(['Game','Summary','Rating','Genres','Platforms','Companies','Cover','Video'],axis=1)
-#     knn = NearestNeighbors(n_neighbors=4)
-#     knn.fit(X)
-#     distances, indices = knn.kneighbors(X)
-#     for i in range(len(X)):
-#         index_list = indices[ind][1:]
-#         dict_game['game 1'] = index_list[0]
-#         dict_game['game 2'] = index_list[1]
-#         dict_game['game 3'] = index_list[2]
-#     return {dict_game}
+@app.get('/recommandation/{ind}')
+def recommande_game(ind):
+    dict_game = {}
+    X = game_df.drop(['Game','Summary','Rating','Genres','Platforms','Companies','Cover','Video'],axis=1)
+    knn = NearestNeighbors(n_neighbors=4)
+    knn.fit(X)
+    distances, indices = knn.kneighbors(X)
+    for i in range(len(X)):
+        index_list = indices[int(ind)][1:]
+        dict_game['game 1'] = index_list[0]
+        dict_game['game 2'] = index_list[1]
+        dict_game['game 3'] = index_list[2]
+    return {dict_game}
 
 # ---------------- FIN DE TON CODE ----------------
 
