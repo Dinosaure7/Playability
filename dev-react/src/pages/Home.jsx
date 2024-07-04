@@ -12,10 +12,9 @@ function Home() {
         Découvrez les notes de nos experts en accessibilité et inclusivité
       </h2>
       <section className="flex flex-wrap justify-center">
-        <GameCard />
-        <GameCard />
-        <GameCard />
-        <GameCard />
+        {gamesData.map((gameData) => (
+          <GameCard gameData={gameData} />
+        ))}
       </section>
       <h2 className="md:text-2xl text-[var(--white-color)] font-medium m-5">
         Découvrez les périphériques recommandés par nos experts en accessibilité
