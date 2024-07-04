@@ -27,7 +27,8 @@ app.add_middleware(
 csv_path = 'app/game_df_detailed_v2.csv'
 
 game_df = pd.read_csv(csv_path)
-game_df.drop(columns="Unnamed: 0", inplace = True)
+game_df["Unnamed: 0"] = game_df.index
+game_df.rename(columns = {"Unnamed: 0": "ID"}, inplace = True)
 
 json_game = game_df.loc[:, :"Video"].to_json(orient = "index")
 json_game = json.loads(json_game)
