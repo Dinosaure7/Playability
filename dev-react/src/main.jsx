@@ -48,10 +48,6 @@ const router = createBrowserRouter([
         loader: () => fetchApi(gamesNameUrl),
       },
       {
-        path: "/game",
-        element: <Game />,
-      },
-      {
         path: "/game/:id",
         element: <Game />,
       },
