@@ -11,6 +11,7 @@ import GameList from "./pages/GameList";
 import Game from "./pages/Game";
 import PeriphList from "./pages/PeriphList";
 import Periph from "./pages/Periph";
+import Privacy from "./pages/Privacy";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/periphList/:id",
         element: <Periph />,
+      },
+      { 
+        path: "/privacy",
+        element: <Privacy />
       },
     ],
   },
