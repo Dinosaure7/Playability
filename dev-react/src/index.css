@@ -14,6 +14,7 @@
 
   /* Primary color */
   --primary-color: #d93f86;
+  --primary-hover-color:#9f2d62;
 
   /* Secondary colors */
   --secondary-color: #1a213c;
@@ -25,6 +26,12 @@
 @layer utilities {
   .no-scrollbar::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
+  }
+  .shadow-right {
+    @apply shadow-[5px_0_10px_rgba(0,0,0,0.1)];
+  }
+  .shadow-top {
+    @apply shadow-[0_-5px_10px_rgba(0,0,0,0.1)];
   }
 }
 
@@ -59,6 +66,23 @@ h1 {
   font-family: var(--font-title);
   font-size: 1.5rem;
   font-weight: 500;
+  color: var(--white-color);
+}
+
+h2 {
+  color: var(--white-color);
+}
+
+h3 {
+  color: var(--white-color);
+}
+
+p {
+  color: var(--white-color);
+}
+
+li {
+  color: var(--white-color);
 }
 
 @media screen and (min-width: 768px) {

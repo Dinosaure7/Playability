@@ -12,21 +12,47 @@ import Game from "./pages/Game";
 import PeriphList from "./pages/PeriphList";
 import Periph from "./pages/Periph";
 import Privacy from "./pages/Privacy";
+import ContactPage from "./pages/ContactPage";
+
+import { fetchApi, fetchApi2 } from "./service/api.service";
+import ErrorPage from "./pages/ErrorPage";
+
+const id = 1091;
+const ids = [1091, 1, 2];
+const gameInfosUrls = ids.map((id) => `/game/${id}`);
+
+const homeUrl = `/`;
+const gamesNameUrl = `/game`;
+const gameInfosUrl = `/game/${id}`;
+const gameSummaryUrl = `/summary/${id}`;
+const gameRatingUrl = `/rating/${id}`;
+const gameGenresUrl = `/genres/${id}`;
+const gamePlatformsUrl = `/platforms/${id}`;
+const gameCompaniesUrl = `/companies/${id}`;
+const gameCoverUrl = `/cover/${id}`;
+const gameVideoUrl = `/video/${id}`;
 
 const router = createBrowserRouter([
   {
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
         element: <Home />,
+        loader: () => fetchApi2(gameInfosUrls),
       },
       {
         path: "/gameList",
         element: <GameList />,
+        loader: () => fetchApi(gamesNameUrl),
       },
       {
         path: "/game",
+        element: <Game />,
+      },
+      {
+        path: "/game/:id",
         element: <Game />,
       },
       {
@@ -37,9 +63,13 @@ const router = createBrowserRouter([
         path: "/periphList/:id",
         element: <Periph />,
       },
-      { 
+      {
         path: "/privacy",
-        element: <Privacy />
+        element: <Privacy />,
+      },
+      {
+        path: "/contact",
+        element: <ContactPage />,
       },
     ],
   },
