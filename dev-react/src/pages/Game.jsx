@@ -91,6 +91,7 @@ function Game() {
       <div className="mb-10 px-10 mt-10 flex gap-8 overflow-x-scroll no-scrollbar">
         <CardComment />
         <CardComment />
+        <CardComment />
       </div>
     </main>
   );
