@@ -13,10 +13,24 @@ import PeriphList from "./pages/PeriphList";
 import Periph from "./pages/Periph";
 import Privacy from "./pages/Privacy";
 import { fetchApi } from "./service/api.service";
+import ErrorPage from "./pages/ErrorPage";
+
+const homeUrl = `/`;
+const gameNameUrl = `/game`;
+const gameSummaryUrl = `/summary/${id}`;
+const gameRatingUrl = `/rating/${id}`;
+const gameGenresUrl = `/genres/${id}`;
+const gamePlatformsUrl = `/platforms/${id}`;
+const gameCompaniesUrl = `/companies/${id}`;
+const gameCoverUrl = `/cover/${id}`;
+const gameVideoUrl = `/video/${id}`;
+
+const id = 1;
 
 const router = createBrowserRouter([
   {
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -39,9 +53,9 @@ const router = createBrowserRouter([
         path: "/periphList/:id",
         element: <Periph />,
       },
-      { 
+      {
         path: "/privacy",
-        element: <Privacy />
+        element: <Privacy />,
       },
     ],
   },
