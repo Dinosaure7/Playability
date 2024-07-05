@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import truncateText from "../service/delgorithm";
 
 function GameCard({ gameData }) {
   const { ID, Game, Cover, Summary, Total } = gameData;
@@ -9,11 +10,14 @@ function GameCard({ gameData }) {
     return null; // Ne rien rendre si Cover n'est pas défini
   }
 
-  // Limiter le résumé à 150 caractères avec des points de suspension si nécessaire
-  const truncatedSummary =
-    Summary && Summary.length > 150
-      ? Summary.substring(0, 150) + "..."
-      : Summary;
+  // Vérifier la longueur du titre du jeu
+  const isLongTitle = Game.length > 32;
+
+  // Limiter le résumé à 150 caractères ou 100 caractères selon la longueur du titre
+  const maxSummaryLength = isLongTitle ? 100 : 150;
+  const truncatedSummary = Summary
+    ? truncateText(Summary, maxSummaryLength)
+    : "";
 
   // Calculer le nombre d'étoiles en couleur primaire
   const rating = Math.ceil(Total);
