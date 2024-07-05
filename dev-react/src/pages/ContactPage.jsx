@@ -110,7 +110,9 @@ function ContactForm() {
         </form>
       ) : (
         <div className="p-8 bg-white shadow-md rounded-md w-full max-w-7xl text-center">
-          <h2 className="text-2xl font-bold mb-4">Merci pour votre message!</h2>
+          <h2 className="text-2xl text-[var(--secondary-color)] font-bold mb-4">
+            Merci pour votre message!
+          </h2>
         </div>
       )}
     </section>

@@ -37,12 +37,16 @@ function NavBar() {
         >
           <li class="py-[10px] delay-2000">
             <Link
-            onClick={handleLinkClick}
+              onClick={handleLinkClick}
               to="/"
               class="no-underline text-[var(--white-color)] opacity-100 text-1.5xl md:text-lg font-light md:font-normal transition-text duration-200 hover:text-[var(--primary-color)]"
             >
               Home
             </Link>
+          </li>
+          <li>
+            <Link  to="/scan"           class="no-underline text-[var(--white-color)] opacity-100 text-1.5xl md:text-lg font-light md:font-normal transition-text duration-200 hover:text-[var(--primary-color)]"
+>Scanner</Link>
           </li>
           <li class="py-[10px] delay-2000">
             <Link
