@@ -45,23 +45,27 @@ function Game() {
         <h2 className="text-[var(--white-color)] md:text-3xl text-xl mt-8">
           Our expert's ratings & reviews
         </h2>
-        <div className="flex justify-between mt-4 md:mt-8">
-          <p className="text-[var(--white-color)]">Overall rating</p>
-          <p className="text-[var(--white-color)] flex gap-2 md:text-xl">
-            {moyenneGlobale - 0.2}/5 <img src="/src/assets/Star.svg" alt="" />
-          </p>
-        </div>
         <div className="flex justify-between mt-2 md:mt-4">
           <p className="text-[var(--white-color)]">Accessibility note</p>
           <p className="text-[var(--white-color)] flex gap-2">
-            {moyenneAccess - 0.4}/5 <img src="/src/assets/Star.svg" alt="" />
+            {gameData["Getting Started"]}/5{" "}
+            <img src="/src/assets/Star.svg" alt="" />
           </p>
         </div>
         <div className="flex justify-between mt-2 md:mt-4">
           <p className="text-[var(--white-color)]">Inclusivity score</p>
           <p className="text-[var(--white-color)] flex gap-2">
-            {moyenneInclude + 0.3}/5
+            {gameData.Navigation}/5
             <img src="/src/assets/Star.svg" alt="" />
+          </p>
+        </div>
+        <div className="flex justify-between mt-4 md:mt-8">
+          <p className="text-[var(--white-color)]">Overall rating</p>
+          <p className="text-[var(--white-color)] flex gap-2 md:text-xl">
+            {((gameData["Getting Started"] + gameData.Navigation) / 2).toFixed(
+              2
+            )}
+            /5 <img src="/src/assets/Star.svg" alt="" />
           </p>
         </div>
       </section>
@@ -78,19 +82,20 @@ function Game() {
         <div className="flex justify-between mt-4">
           <p className="text-[var(--white-color)]">Overall rating</p>
           <p className="text-[var(--white-color)] flex gap-2">
-            {moyenneGlobale + 0.3}/5 <img src="/src/assets/Star.svg" alt="" />
+            {gameData.Audio}/5 <img src="/src/assets/Star.svg" alt="" />
           </p>
         </div>
         <div className="flex justify-between mt-2">
           <p className="text-[var(--white-color)]">Accessibility note</p>
           <p className="text-[var(--white-color)] flex gap-2">
-            {moyenneAccess - 0.2}/5 <img src="/src/assets/Star.svg" alt="" />
+            {gameData.Reading}/5 <img src="/src/assets/Star.svg" alt="" />
           </p>
         </div>
         <div className="flex justify-between mt-2">
           <p className="text-[var(--white-color)]">Inclusivity score</p>
           <p className="text-[var(--white-color)] flex gap-2">
-            {moyenneInclude + 0.1}/5 <img src="/src/assets/Star.svg" alt="" />
+            {((gameData.Audio + gameData.Reading) / 2).toFixed(2)}/5{" "}
+            <img src="/src/assets/Star.svg" alt="" />
           </p>
         </div>
       </section>
