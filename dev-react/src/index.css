@@ -45,6 +45,18 @@
   .text-shadow {
     text-shadow: black 0px 0px 10px 10px;
   }
+  /* styles.css */
+  .star:before {
+    content: "\2605";
+    font-size: 30px;
+  }
+
+  input:checked ~ label,
+  label:hover,
+  label:hover ~ label {
+    color: #6f00ff;
+    transition: color 0.3s;
+  }
 }
 
 #menuToggle input:checked ~ span:nth-child(2) {

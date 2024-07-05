@@ -1,6 +1,7 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import CardComment from "../components/CardComment";
 import Return from "../components/Return";
+import Modal from "../components/Modal";
 
 function Game() {
   const gameData = useLoaderData();
@@ -13,6 +14,7 @@ function Game() {
   console.log(gameData);
   return (
     <main>
+      <Modal />
       <div className="my-5 ml-10">
         <Return />
       </div>
@@ -72,9 +74,12 @@ function Game() {
       </div>
       <div class="w-4/5 mx-auto my-4 border-t border-[var(--nuance3-secondary)]"></div>
       <section className="mx-10">
-        <h2 className="text-[var(--white-color)] text-xl mt-8">
+        <h2 className="text-[var(--white-color)] text-xl mt-8 inline">
           User ratings & reviews
         </h2>
+        <button className="bg-[var(--primary-color)] font-medium rounded-lg hover:bg-[var(--primary-hover-color)] transition-all ease-in-out ml-10 p-2 inline text-[var(--white-color)]">
+          Share your opinion
+        </button>
         <div className="flex justify-between mt-4">
           <p className="text-[var(--white-color)]">Overall rating</p>
           <p className="text-[var(--white-color)] flex gap-2">
