@@ -53,13 +53,11 @@ const router = createBrowserRouter([
         path: "/gameList/:id",
         element: <Game />,
         loader: async ({ params }) => {
-          // Effectuer les deux appels API simultanément
           const [gameData, gameRecommendations] = await Promise.all([
             fetchApi(`${gamesNameUrl}/${params.id}`),
             fetchApi(`${gameRecoUrl}`),
           ]);
 
-          // Retourner les données combinées
           return { gameData, gameRecommendations };
         },
       },

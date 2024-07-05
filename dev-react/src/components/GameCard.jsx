@@ -5,24 +5,19 @@ import truncateText from "../service/delgorithm";
 function GameCard({ gameData }) {
   const { ID, Game, Cover, Summary, Total } = gameData;
 
-  // Vérifier si l'image de couverture existe
   if (!Cover) {
-    return null; // Ne rien rendre si Cover n'est pas défini
+    return null;
   }
 
-  // Vérifier la longueur du titre du jeu
   const isLongTitle = Game.length > 32;
 
-  // Limiter le résumé à 150 caractères ou 100 caractères selon la longueur du titre
   const maxSummaryLength = isLongTitle ? 100 : 150;
   const truncatedSummary = Summary
     ? truncateText(Summary, maxSummaryLength)
     : "";
 
-  // Calculer le nombre d'étoiles en couleur primaire
   const rating = Math.ceil(Total);
 
-  // Générer un nombre aléatoire entre 1 et 100 pour chaque carte
   const [randomNumber] = React.useState(
     () => Math.floor(Math.random() * 100) + 1
   );
@@ -63,7 +58,6 @@ function GameCard({ gameData }) {
   );
 }
 
-// Composant pour afficher les étoiles de notation
 function Rating({ total, randomNumber }) {
   const maxStars = 5;
   const stars = [];
