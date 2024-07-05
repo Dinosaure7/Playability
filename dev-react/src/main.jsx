@@ -16,6 +16,7 @@ import ContactPage from "./pages/ContactPage";
 
 import { fetchApi, fetchApi2 } from "./service/api.service";
 import ErrorPage from "./pages/ErrorPage";
+import Scan from "./pages/Scan";
 
 const id = 1091;
 const ids = [33, 161, 168, 290, 871, 1091];
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: <ContactPage />,
+      },
+      {
+        path: "/scan",
+        element: <Scan />,
       },
     ],
   },
