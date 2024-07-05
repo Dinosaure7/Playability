@@ -52,6 +52,14 @@
     font-size: 30px;
   }
 
+  .modalOpen {
+    @apply opacity-100 top-0 delay-75 duration-500;
+  }
+  
+  .modalNotOpen {
+    @apply duration-500 top-20 opacity-0;
+  }
+
   input:checked ~ label,
   label:hover,
   label:hover ~ label {

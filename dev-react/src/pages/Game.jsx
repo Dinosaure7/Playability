@@ -5,6 +5,8 @@ import { reviewsUser, expertReviews } from "../service/review";
 import { useEffect } from "react";
 import GameCard from "../components/GameCard";
 import Return from "../components/Return";
+import Modal from "../components/Modal";
+import CardComment2 from "../components/CardComment2";
 
 function Game() {
   const { gameData, gameRecommendations } = useLoaderData();
@@ -15,10 +17,6 @@ function Game() {
   const moyenneGlobale = Math.ceil(moyenneAccess + moyenneInclude / 2);
 
   console.log(gameData);
-
-  const [firstInput, setFirstInput] = useState("");
-  const [secondInput, setSecondInput] = useState("");
-  const [thirdInput, setThirdInput] = useState("");
 
   const [recommendedGames, setRecommendedGames] = useState([]);
 
@@ -61,8 +59,46 @@ function Game() {
     fetchRecommendedGames();
   }, []);
 
+  const [firstInput, setFirstInput] = useState("");
+  const [secondInput, setSecondInput] = useState("");
+  const [thirdInput, setThirdInput] = useState("");
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+
+  const handleChangeModal = useCallback(() => {
+    setIsVisible(!isVisible);
+    if (isVisible) {
+      setTimeout(() => {
+        setIsVisible(false);
+      }, 500);
+    }
+    setTimeout(() => {
+      setIsOpen(!isOpen);
+    }, 1);
+  }, [isVisible, isOpen]);
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+
+  const isModalOpen = isOpen ? "modalOpen" : "modalNotOpen";
+
+  const isModalVisible = isVisible ? "block" : "hidden";
+
   return (
     <main>
+      <Modal
+        firstInput={firstInput}
+        secondInput={secondInput}
+        thirdInput={thirdInput}
+        setFirstInput={(e) => setFirstInput(e.target.value)}
+        setSecondInput={(e) => setSecondInput(e.target.value)}
+        setThirdInput={(e) => setThirdInput(e.target.value)}
+        isModalOpen={isModalOpen}
+        isModalVisible={isModalVisible}
+        handleChangeModal={handleChangeModal}
+      />
       <div className="my-5 ml-10">
         <Return />
       </div>
@@ -96,14 +132,14 @@ function Game() {
           Our expert's ratings & reviews
         </h2>
         <div className="flex justify-between mt-2 md:mt-4">
-          <p className="text-[var(--white-color)]">Accessibility note</p>
+          <p className="text-[var(--white-color)]">Accessibility rating</p>
           <p className="text-[var(--white-color)] flex gap-2">
             {gameData["Getting Started"]}/5{" "}
             <img src="/src/assets/Star.svg" alt="" />
           </p>
         </div>
         <div className="flex justify-between mt-2 md:mt-4">
-          <p className="text-[var(--white-color)]">Inclusivity score</p>
+          <p className="text-[var(--white-color)]">Inclusivity rating</p>
           <p className="text-[var(--white-color)] flex gap-2">
             {gameData.Navigation}/5
             <img src="/src/assets/Star.svg" alt="" />
@@ -135,8 +171,11 @@ function Game() {
         <h2 className="text-[var(--white-color)] text-xl mt-8 inline">
           User ratings & reviews
         </h2>
-        <button className="bg-[var(--primary-color)] font-medium rounded-lg hover:bg-[var(--primary-hover-color)] transition-all ease-in-out ml-10 p-2 inline text-[var(--white-color)]">
-          Share your opinion
+        <button
+          className="md:ml-10 mt-4 md:mt-0 bg-[var(--primary-color)] hover:bg-[var(--primary-hover-color)] transition-all ease-in-out px-4 py-2 rounded-lg text-[var(--white-color)]"
+          onClick={handleChangeModal}
+        >
+          Comment
         </button>
         <div className="flex justify-between mt-4">
           <p className="text-[var(--white-color)]">Overall rating</p>
@@ -145,13 +184,13 @@ function Game() {
           </p>
         </div>
         <div className="flex justify-between mt-2">
-          <p className="text-[var(--white-color)]">Accessibility note</p>
+          <p className="text-[var(--white-color)]">Accessibility rating</p>
           <p className="text-[var(--white-color)] flex gap-2">
             {gameData.Reading}/5 <img src="/src/assets/Star.svg" alt="" />
           </p>
         </div>
         <div className="flex justify-between mt-2">
-          <p className="text-[var(--white-color)]">Inclusivity score</p>
+          <p className="text-[var(--white-color)]">Inclusivity rating</p>
           <p className="text-[var(--white-color)] flex gap-2">
             {gameData.Audio}/5 <img src="/src/assets/Star.svg" alt="" />
           </p>
@@ -165,7 +204,7 @@ function Game() {
         </div>
       </section>
       <div className="mb-10 px-10 mt-10 flex gap-8 overflow-x-scroll no-scrollbar">
-        {reviewsUser.map((review, index) => (
+        {reviewsUser.slice(7, 12).map((review, index) => (
           <CardComment
             key={index}
             name={review.name}
@@ -174,6 +213,11 @@ function Game() {
             inclusivity={review.inclusivity}
           />
         ))}
+        <CardComment2
+          firstname={firstInput}
+          lastname={secondInput}
+          comment={thirdInput}
+        />
       </div>
       <div className="mb-2 px-10 mt-2 gap-8">
         <h2 className="text-[var(--white-color)] md:text-xl text-l font-medium">
