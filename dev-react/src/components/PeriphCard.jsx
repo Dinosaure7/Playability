@@ -1,28 +1,29 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function PeriphCard() {
+function PeriphCard({ controller }) {
   const scrollToTop = window.scrollTo({
     top: 0,
     behavior: "smooth",
   });
+  const { id, name, description, imageURL, imageAlt, youtubeID } = controller;
+  console.log(controller);
+
   return (
     <div className="max-w-md md:max-w-2xl px-5 my-5">
       <div className="bg-white shadow-xl rounded-lg overflow-hidden flex flex-col md:flex-row">
         <img
-          className="w-full h-56 md:h-auto md:w-56 object-contain md:object-cover shadow-right"
-          src="https://media.direct.playstation.com/is/image/psdglobal/Access-Controller-Front-Right-Hero-1"
+          className="w-full h-56 md:h-auto md:w-56 object-contain shadow-right"
+          src={imageURL}
+          alt={imageAlt}
         />
         <div className="flex flex-col justify-between">
           <div className="p-4 md:p-5 block m-auto">
             <p className="text-gray-800 font-bold text-xl md:text-2xl">
-              Access Controller
+              {name}
             </p>
             <p className="text-gray-700 md:text-lg">
-              The Access Controller is a highly customizable controller kit
-              designed to help players with disabilities play more comfortably
-              and for longer periods on the PlayStation 5. It offers features
-              such as...
+              {description}
             </p>
           </div>
           <div className="p-4 md:p-5 shadow-top bg-gray-100">
@@ -30,7 +31,7 @@ function PeriphCard() {
               <div>
                 <div className="text-lg text-gray-700">
                   <span className="text-gray-900 font-bold">
-                  Overall accessibility score
+                    Overall accessibility score
                   </span>
                 </div>
                 <div className="flex items-center">
@@ -77,7 +78,7 @@ function PeriphCard() {
                   </div>
                 </div>
               </div>
-              <Link onClick={scrollToTop} to="/periphList/:id">
+              <Link to={`/periphList/${id}`} onClick={scrollToTop}>
                 <button className="mt-3 sm:mt-0 py-2 px-5 md:py-3 md:px-6 bg-[var(--primary-color)] hover:bg-[var(--primary-hover-color)] font-bold text-white md:text-lg rounded-lg shadow-md">
                   See more
                 </button>
