@@ -11,7 +11,7 @@ function Home() {
   const gamesData = useLoaderData();
   return (
     <>
-      <section className="mb-20 shadow w-screen h-screen bg-cover cover-home1">
+      <section className="mb-20 shadow w-full h-full bg-cover cover-home1">
         <div className="backdrop-blur-sm flex flex-col gap-20 justify-center items-center w-screen h-screen">
           <h1 className="text-5xl md:text-8xl text-shadow">PlayAbility</h1>
           <div className="flex flex-col gap-10">
