@@ -1,16 +1,17 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import CardComment from "../components/CardComment";
 import Return from "../components/Return";
+import { reviewsUser, expertReviews } from "../service/review";
 
 function Game() {
-  const gameData = useLoaderData();
+  const { gameData, gameRecommendations } = useLoaderData();
   const moyenneAccess = Math.ceil(
     gameData.Controls + gameData.Navigation + gameData.Reading / 3
   );
   const moyenneInclude = Math.ceil(gameData.Navigation + gameData.Controls / 2);
   const moyenneGlobale = Math.ceil(moyenneAccess + moyenneInclude / 2);
 
-  console.log(gameData);
+  console.log(gameRecommendations);
   return (
     <main>
       <div className="my-5 ml-10">
@@ -70,21 +71,21 @@ function Game() {
         </div>
       </section>
       <div className="mb-10 px-10 mt-10 flex gap-8 overflow-scroll no-scrollbar">
-        <CardComment />
-        <CardComment />
-        <CardComment />
+        {expertReviews.map((review, index) => (
+          <CardComment
+            key={index}
+            name={review.name}
+            comment={review.comment}
+            accessibility={review.accessibility}
+            inclusivity={review.inclusivity}
+          />
+        ))}
       </div>
       <div class="w-4/5 mx-auto my-4 border-t border-[var(--nuance3-secondary)]"></div>
       <section className="mx-10">
         <h2 className="text-[var(--white-color)] text-xl mt-8">
           User ratings & reviews
         </h2>
-        <div className="flex justify-between mt-4">
-          <p className="text-[var(--white-color)]">Overall rating</p>
-          <p className="text-[var(--white-color)] flex gap-2">
-            {gameData.Audio}/5 <img src="/src/assets/Star.svg" alt="" />
-          </p>
-        </div>
         <div className="flex justify-between mt-2">
           <p className="text-[var(--white-color)]">Accessibility note</p>
           <p className="text-[var(--white-color)] flex gap-2">
@@ -94,15 +95,27 @@ function Game() {
         <div className="flex justify-between mt-2">
           <p className="text-[var(--white-color)]">Inclusivity score</p>
           <p className="text-[var(--white-color)] flex gap-2">
+            {gameData.Audio}/5 <img src="/src/assets/Star.svg" alt="" />
+          </p>
+        </div>
+        <div className="flex justify-between mt-4">
+          <p className="text-[var(--white-color)]">Overall rating</p>
+          <p className="text-[var(--white-color)] flex gap-2">
             {((gameData.Audio + gameData.Reading) / 2).toFixed(2)}/5{" "}
             <img src="/src/assets/Star.svg" alt="" />
           </p>
         </div>
       </section>
       <div className="mb-10 px-10 mt-10 flex gap-8 overflow-x-scroll no-scrollbar">
-        <CardComment />
-        <CardComment />
-        <CardComment />
+        {reviewsUser.map((review, index) => (
+          <CardComment
+            key={index}
+            name={review.name}
+            comment={review.comment}
+            accessibility={review.accessibility}
+            inclusivity={review.inclusivity}
+          />
+        ))}
       </div>
     </main>
   );

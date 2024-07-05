@@ -32,6 +32,7 @@ const gamePlatformsUrl = `/platforms/${id}`;
 const gameCompaniesUrl = `/companies/${id}`;
 const gameCoverUrl = `/cover/${id}`;
 const gameVideoUrl = `/video/${id}`;
+const gameRecoUrl = `/recommandation/${id}`;
 
 const router = createBrowserRouter([
   {
@@ -51,7 +52,16 @@ const router = createBrowserRouter([
       {
         path: "/gameList/:id",
         element: <Game />,
-        loader: ({ params }) => fetchApi(`${gamesNameUrl}/${params.id}`),
+        loader: async ({ params }) => {
+          // Effectuer les deux appels API simultanément
+          const [gameData, gameRecommendations] = await Promise.all([
+            fetchApi(`${gamesNameUrl}/${params.id}`),
+            fetchApi(`${gameRecoUrl}`),
+          ]);
+
+          // Retourner les données combinées
+          return { gameData, gameRecommendations };
+        },
       },
       {
         path: "/periphList",
