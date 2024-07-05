@@ -33,7 +33,8 @@ function Footer() {
           href="https://www.facebook.com/"
           target="blank"
           rel="noopener noreferrer"
-          className="text-center text-[var(--nuance3-secondary)] "
+          className="text-center text-[var(--nuance3-secondary)]"
+          aria-label="Facebook page link"
         >
           <FaFacebook size={32} />
         </a>
@@ -42,6 +43,7 @@ function Footer() {
           target="blank"
           rel="noopener noreferrer"
           className="text-[var(--nuance3-secondary)]"
+          aria-label="Twitter page link"
         >
           <FaTwitter size={32} />
         </a>
@@ -50,6 +52,7 @@ function Footer() {
           target="blank"
           rel="noopener noreferrer"
           className="bg-gradient-to-r from-[var(--nuance3-secondary)] via-[var(--nuance3-secondary)] to-[var(--nuance3-secondary)] p-1 rounded-full"
+          aria-label="Instagram page link"
         >
           <FaInstagram size={32} />
         </a>
