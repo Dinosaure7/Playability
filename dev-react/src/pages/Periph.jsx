@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import CardComment from "../components/CardComment";
 import Return from "../components/Return";
 import accessibleControllers from "../data/accessible-controllers.json";
+import { reviewsUser, expertReviews } from "../service/review";
 
 function Periph() {
   const { id } = useParams();
@@ -19,7 +20,7 @@ function Periph() {
         src={`https://youtube.com/embed/${periphData.youtubeID}?autoplay=0`}
         style={{ width: "100%", height: "500px" }} // Ajout des styles ici
       />
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 p-7">
         <h1 className="text-[var(--white-color)] mt-4">{periphData.name}</h1>
         <h2 className="text-[var(--white-color)] text-3xl mt-8">Summary</h2>
         <p className="text-[var(--white-color)] mt-4">
@@ -33,9 +34,17 @@ function Periph() {
         </div>
       </div>
       <div className="mb-10 px-10 mt-10 flex gap-8 overflow-x-scroll no-scrollbar">
-        <CardComment />
-        <CardComment />
-        <CardComment />
+      {reviewsUser
+        .slice(-5) // Sélectionne les 5 derniers éléments
+        .map((review, index) => (
+          <CardComment
+            key={index}
+            name={review.name}
+            comment={review.comment}
+            accessibility={review.accessibility}
+            inclusivity={review.inclusivity}
+          />
+        ))}
       </div>
     </main>
   );

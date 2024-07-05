@@ -2,6 +2,8 @@ import { useLoaderData, useParams } from "react-router-dom";
 import CardComment from "../components/CardComment";
 import Return from "../components/Return";
 import { reviewsUser, expertReviews } from "../service/review";
+import { useEffect, useState } from "react";
+import GameCard from "../components/GameCard";
 
 function Game() {
   const { gameData, gameRecommendations } = useLoaderData();
@@ -11,7 +13,47 @@ function Game() {
   const moyenneInclude = Math.ceil(gameData.Navigation + gameData.Controls / 2);
   const moyenneGlobale = Math.ceil(moyenneAccess + moyenneInclude / 2);
 
-  console.log(gameRecommendations);
+  const [recommendedGames, setRecommendedGames] = useState([]);
+
+  useEffect(() => {
+    const fetchRecommendedGames = async () => {
+      try {
+        // Vérifier si gameRecommendations est bien un objet JSON
+        const gameIdsObject =
+          typeof gameRecommendations === "string"
+            ? JSON.parse(gameRecommendations)
+            : gameRecommendations;
+
+        // Extraire les IDs des jeux
+        const gameIds = Object.values(gameIdsObject);
+        console.log(gameIds);
+
+        // Effectuer des requêtes fetch pour chaque ID de jeu
+        const fetchPromises = gameIds.map((id) =>
+          fetch(`${import.meta.env.VITE_API_URL}/game/${id}`, { mode: "cors" }) // Note: mode: 'cors' permet les requêtes cross-origin
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error(`Failed to fetch game with ID: ${id}`);
+              }
+              return response.json();
+            })
+        );
+
+        // Attendre que toutes les requêtes soient complétées
+        const games = await Promise.all(fetchPromises);
+
+        // Mettre à jour l'état avec les détails des jeux recommandés
+        setRecommendedGames(games);
+      } catch (error) {
+        console.error("Error fetching recommended games:", error);
+      }
+    };
+
+    // Appeler la fonction pour récupérer les jeux recommandés
+    fetchRecommendedGames();
+  }, []);
+
+  console.log(recommendedGames);
   return (
     <main>
       <div className="my-5 ml-10">
@@ -117,6 +159,16 @@ function Game() {
           />
         ))}
       </div>
+      <div className="mb-2 px-10 mt-2 gap-8">
+        <h2 className="text-[var(--white-color)] md:text-xl text-l font-medium">
+          Similar games
+        </h2>
+      </div>
+      <section className="flex flex-wrap justify-center overflow-x-scroll no-scrollbar">
+        {recommendedGames.map((gameData) => (
+          <GameCard gameData={gameData} />
+        ))}
+      </section>
     </main>
   );
 }
