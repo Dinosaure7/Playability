@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import truncateText from "../service/delgorithm";
-// import imageController from `../assets/image-controller`;
-// import "../assets/image-controller";
 import img1 from "../assets/image-controller/xbox.jpg";
 import img2 from "../assets/image-controller/sonyv2.png";
 import img3 from "../assets/image-controller/logi.png";
@@ -35,23 +33,44 @@ const getImageById = (id) => {
       return null; // Optionnel: Ajouter une image par défaut ici si nécessaire
   }
 };
-// const pathImages = "../assets/image-controller";
+
+// Notes et reviews prédéfinis pour chaque contrôleur
+const controllerRatings = {
+  1: { rating: 4, reviews: 28 },
+  2: { rating: 4, reviews: 32 },
+  3: { rating: 3, reviews: 18 },
+  4: { rating: 4, reviews: 24 },
+  5: { rating: 5, reviews: 36 },
+  6: { rating: 3, reviews: 15 },
+  7: { rating: 4, reviews: 22 },
+  8: { rating: 4, reviews: 19 },
+};
 
 function PeriphCard({ controller }) {
-  const scrollToTop = window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
-  const { id, name, description, imageURL, src, imageAlt, youtubeID } =
-    controller;
+  const { id, name, description, imageAlt } = controller;
 
-    // const imagePath = `${import.meta.env.VITE_API_URL}/assets/image-controller/${src}`;
-    // const imagePath = require(`../assets/image-controller/${src}`).default;
-    const imagePath = getImageById(id);
+  // Obtenez l'image en fonction de l'ID du contrôleur
+  const imagePath = getImageById(id);
 
+  // Obtenez la note et le nombre de reviews
+  const { rating, reviews } = controllerRatings[id] || {
+    rating: 0,
+    reviews: 0,
+  };
+
+  // Calculez le nombre d'étoiles colorées et noires
+  const coloredStars = rating;
+  const blackStars = 5 - coloredStars;
+
+  // Calculez la longueur maximale de la description tronquée
   const isLongName = name.length > 32;
-
   const maxDescriptionLength = isLongName ? 100 : 150;
   const truncatedDescription = description
     ? truncateText(description, maxDescriptionLength)
@@ -82,44 +101,29 @@ function PeriphCard({ controller }) {
                 </div>
                 <div className="flex items-center">
                   <div className="inline-flex -mx-px">
-                    <svg
-                      className="w-4 h-4 mx-px fill-current text-[var(--primary-color)]"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 14 14"
-                    >
-                      <path d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
-                    </svg>
-                    <svg
-                      className="w-4 h-4 mx-px fill-current text-[var(--primary-color)]"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 14 14"
-                    >
-                      <path d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
-                    </svg>
-                    <svg
-                      className="w-4 h-4 mx-px fill-current text-[var(--primary-color)]"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 14 14"
-                    >
-                      <path d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
-                    </svg>
-                    <svg
-                      className="w-4 h-4 mx-px fill-current text-[var(--primary-color)]"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 14 14"
-                    >
-                      <path d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
-                    </svg>
-                    <svg
-                      className="w-4 h-4 mx-px fill-current text-[var(--primary-color)]"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 14 14"
-                    >
-                      <path d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
-                    </svg>
+                    {[...Array(coloredStars)].map((_, i) => (
+                      <svg
+                        key={i}
+                        className="w-4 h-4 mx-px fill-current text-[var(--primary-color)]"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 14 14"
+                      >
+                        <path d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
+                      </svg>
+                    ))}
+                    {[...Array(blackStars)].map((_, i) => (
+                      <svg
+                        key={i + coloredStars} // Assurez-vous que les clés sont uniques
+                        className="w-4 h-4 mx-px fill-current text-[var(--black-color)]"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 14 14"
+                      >
+                        <path d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
+                      </svg>
+                    ))}
                   </div>
                   <div className="text-gray-600 ml-2 text-sm md:text-base mt-1">
-                    28 reviews
+                    {reviews} reviews
                   </div>
                 </div>
               </div>
