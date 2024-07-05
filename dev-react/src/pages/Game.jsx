@@ -133,12 +133,6 @@ function Game() {
         <button className="bg-[var(--primary-color)] font-medium rounded-lg hover:bg-[var(--primary-hover-color)] transition-all ease-in-out ml-10 p-2 inline text-[var(--white-color)]">
           Share your opinion
         </button>
-        <div className="flex justify-between mt-4">
-          <p className="text-[var(--white-color)]">Overall rating</p>
-          <p className="text-[var(--white-color)] flex gap-2">
-            {moyenneGlobale + 0.3}/5 <img src="/src/assets/Star.svg" alt="" />
-          </p>
-        </div>
         <div className="flex justify-between mt-2">
           <p className="text-[var(--white-color)]">Accessibility note</p>
           <p className="text-[var(--white-color)] flex gap-2">
