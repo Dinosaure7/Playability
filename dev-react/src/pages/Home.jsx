@@ -9,7 +9,9 @@ function Home() {
     top: 0,
     behavior: "smooth",
   });
+
   const gamesData = useLoaderData();
+
   return (
     <>
       <section className="mb-20 shadow w-full h-full bg-cover cover-home1">

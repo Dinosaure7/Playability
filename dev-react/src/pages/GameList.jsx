@@ -23,7 +23,7 @@ function GameList() {
 
   const handleClick = (pageNumber) => {
     setCurrentPage(pageNumber);
-    window.scrollTo({ top: 0, behavior: "smooth" }); // Délai de 100ms
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -36,7 +36,7 @@ function GameList() {
   }, [currentPage]);
 
   useEffect(() => {
-    setCurrentPage(1); // Revenir à la première page lorsque le filtre change
+    setCurrentPage(1);
   }, [inputContent]);
 
   return (

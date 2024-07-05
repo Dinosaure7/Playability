@@ -8,7 +8,6 @@ function ContactForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Vérification des champs avant de soumettre
     const firstName = event.target.firstName.value.trim();
     const lastName = event.target.lastName.value.trim();
     const email = event.target.email.value.trim();
@@ -18,7 +17,6 @@ function ContactForm() {
       return;
     }
 
-    // Vérification du format de l'email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       alert("Please enter a valid email address.");
@@ -46,9 +44,12 @@ function ContactForm() {
         <form
           aria-labelledby="Formulaire de contact"
           className="flex flex-col justify-center gap-4 p-8 w-full max-w-7xl bg-[var(--white-color)] shadow-md rounded-md border-x-2 text-[var(--secondary-color)] max-md:m-3 m-5"
-          onSubmit={handleSubmit} // Ajout de la fonction handleSubmit au formulaire
+          onSubmit={handleSubmit}
         >
-          <h2 id="contactFormTitle" className="text-xl font-bold mb-4 text-center">
+          <h2
+            id="contactFormTitle"
+            className="text-xl font-bold mb-4 text-center"
+          >
             Contact form
           </h2>
 

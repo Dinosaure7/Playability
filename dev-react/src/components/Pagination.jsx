@@ -1,27 +1,55 @@
-const Pagination = ({ totalPages, currentPage, paginate }) => {
-  const pageNumbers = [];
+import React from "react";
 
-  for (let i = 1; i <= totalPages; i++) {
-    pageNumbers.push(i);
-  }
+const Pagination = ({ totalPages, currentPage, paginate }) => {
+  const isFirstPage = currentPage === 1;
+  const isLastPage = currentPage === totalPages;
+
+  const handlePrevious = () => {
+    if (!isFirstPage) {
+      paginate(currentPage - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (!isLastPage) {
+      paginate(currentPage + 1);
+    }
+  };
 
   return (
-    <nav>
-      <ul className="flex">
-        {pageNumbers.map((number) => (
-          <li key={number}>
-            <button
-              className={`${
-                currentPage === number
-                  ? "bg-[var(--primary-color)] text-white"
-                  : "bg-gray-200 text-gray-800"
-              } px-4 py-2 mx-1 rounded-md`}
-              onClick={() => paginate(number)}
-            >
-              {number}
-            </button>
-          </li>
-        ))}
+    <nav className="flex justify-center items-center mt-4">
+      <ul className="flex space-x-2 items-center">
+        <li>
+          <button
+            onClick={handlePrevious}
+            className={`px-4 py-2 rounded-md font-medium ${
+              isFirstPage
+                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                : "bg-gray-200 text-gray-800 hover:bg-gray-300"
+            }`}
+            disabled={isFirstPage}
+          >
+            Previous
+          </button>
+        </li>
+        <li>
+          <span className="px-4 py-2 text-[var(--white-color)] font-medium md:max-lg:text-xl flex justify-center items-center p-2 md:text-xl md:m-4">
+            Page {currentPage} of {totalPages}
+          </span>
+        </li>
+        <li>
+          <button
+            onClick={handleNext}
+            className={`px-4 py-2 rounded-md font-medium ${
+              isLastPage
+                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                : "bg-gray-200 text-gray-800 hover:bg-gray-300"
+            }`}
+            disabled={isLastPage}
+          >
+            Next
+          </button>
+        </li>
       </ul>
     </nav>
   );
