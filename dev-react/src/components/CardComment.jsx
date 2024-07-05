@@ -1,5 +1,5 @@
 function CardComment({ name, comment, accessibility, inclusivity }) {
-  const globalRating = ((accessibility + inclusivity) / 2).toFixed(1); // Calcul de la moyenne avec une décimale
+  const globalRating = ((accessibility + inclusivity) / 2).toFixed(1);
 
   return (
     <section className="bg-[var(--nuance4-secondary)] flex flex-col gap-4 px-4 py-4 rounded-md">

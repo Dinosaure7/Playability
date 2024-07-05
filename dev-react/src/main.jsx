@@ -22,17 +22,16 @@ const id = 1091;
 const ids = [33, 161, 168, 290, 871, 1091];
 const gameInfosUrls = ids.map((id) => `/game/${id}`);
 
-const homeUrl = `/`;
-const gamesNameUrl = `/game`;
+const gamesUrl = `/game`;
 const gameInfosUrl = `/game/${id}`;
-const gameSummaryUrl = `/summary/${id}`;
-const gameRatingUrl = `/rating/${id}`;
-const gameGenresUrl = `/genres/${id}`;
-const gamePlatformsUrl = `/platforms/${id}`;
-const gameCompaniesUrl = `/companies/${id}`;
-const gameCoverUrl = `/cover/${id}`;
-const gameVideoUrl = `/video/${id}`;
-const gameRecoUrl = `/recommandation/${id}`;
+const gameSummaryUrl = `/summary`;
+const gameRatingUrl = `/rating`;
+const gameGenresUrl = `/genres`;
+const gamePlatformsUrl = `/platforms`;
+const gameCompaniesUrl = `/companies`;
+const gameCoverUrl = `/cover`;
+const gameVideoUrl = `/video`;
+const gameRecoUrl = `/recommandation`;
 
 const router = createBrowserRouter([
   {
@@ -54,8 +53,8 @@ const router = createBrowserRouter([
         element: <Game />,
         loader: async ({ params }) => {
           const [gameData, gameRecommendations] = await Promise.all([
-            fetchApi(`${gamesNameUrl}/${params.id}`),
-            fetchApi(`${gameRecoUrl}`),
+            fetchApi(`${gamesUrl}/${params.id}`),
+            fetchApi(`${gameRecoUrl}/${params.id}`),
           ]);
 
           return { gameData, gameRecommendations };

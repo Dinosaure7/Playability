@@ -10,7 +10,6 @@ import img6 from "../assets/image-controller/able.jpg";
 import img7 from "../assets/image-controller/hori.jpg";
 import img8 from "../assets/image-controller/ben.jpg";
 
-// Fonction pour obtenir l'image par ID
 const getImageById = (id) => {
   switch (id) {
     case 1:
@@ -30,11 +29,10 @@ const getImageById = (id) => {
     case 8:
       return img8;
     default:
-      return null; // Optionnel: Ajouter une image par défaut ici si nécessaire
+      return null;
   }
 };
 
-// Notes et reviews prédéfinis pour chaque contrôleur
 const controllerRatings = {
   1: { rating: 4, reviews: 28 },
   2: { rating: 4, reviews: 32 },
@@ -56,20 +54,16 @@ function PeriphCard({ controller }) {
 
   const { id, name, description, imageAlt } = controller;
 
-  // Obtenez l'image en fonction de l'ID du contrôleur
   const imagePath = getImageById(id);
 
-  // Obtenez la note et le nombre de reviews
   const { rating, reviews } = controllerRatings[id] || {
     rating: 0,
     reviews: 0,
   };
 
-  // Calculez le nombre d'étoiles colorées et noires
   const coloredStars = rating;
   const blackStars = 5 - coloredStars;
 
-  // Calculez la longueur maximale de la description tronquée
   const isLongName = name.length > 32;
   const maxDescriptionLength = isLongName ? 100 : 150;
   const truncatedDescription = description
@@ -113,7 +107,7 @@ function PeriphCard({ controller }) {
                     ))}
                     {[...Array(blackStars)].map((_, i) => (
                       <svg
-                        key={i + coloredStars} // Assurez-vous que les clés sont uniques
+                        key={i + coloredStars}
                         className="w-4 h-4 mx-px fill-current text-[var(--black-color)]"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 14 14"
@@ -134,7 +128,6 @@ function PeriphCard({ controller }) {
               </Link>
             </div>
             <div className="mt-3 text-gray-600 text-sm md:text-base">
-              {/* *Prices may vary depending on selected date. */}
             </div>
           </div>
         </div>

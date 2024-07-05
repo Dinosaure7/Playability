@@ -8,6 +8,7 @@ import Return from "../components/Return";
 
 function Game() {
   const { gameData, gameRecommendations } = useLoaderData();
+
   const moyenneAccess = Math.ceil(
     gameData.Controls + gameData.Navigation + gameData.Reading / 3
   );
@@ -25,33 +26,27 @@ function Game() {
   useEffect(() => {
     const fetchRecommendedGames = async () => {
       try {
-        // Vérifier si gameRecommendations est bien un objet JSON
         const gameIdsObject =
           typeof gameRecommendations === "string"
             ? JSON.parse(gameRecommendations)
             : gameRecommendations;
 
-        // Extraire les IDs des jeux
         const gameIds = Object.values(gameIdsObject);
         console.log(gameIds);
 
-        // Effectuer des requêtes fetch pour chaque ID de jeu
         const fetchPromises = gameIds.map((id) =>
           fetch(`${import.meta.env.VITE_API_URL}/game/${id}`, {
             mode: "cors",
-          }) // Note: mode: 'cors' permet les requêtes cross-origin
-            .then((response) => {
-              if (!response.ok) {
-                throw new Error(`Failed to fetch game with ID: ${id}`);
-              }
-              return response.json();
-            })
+          }).then((response) => {
+            if (!response.ok) {
+              throw new Error(`Failed to fetch game with ID: ${id}`);
+            }
+            return response.json();
+          })
         );
 
-        // Attendre que toutes les requêtes soient complétées
         const games = await Promise.all(fetchPromises);
 
-        // Mettre à jour l'état avec les détails des jeux recommandés
         setRecommendedGames(games);
       } catch (error) {
         console.error("Error fetching recommended games:", error);
