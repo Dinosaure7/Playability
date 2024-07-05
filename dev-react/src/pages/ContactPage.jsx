@@ -8,7 +8,6 @@ function ContactForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Vérification des champs avant de soumettre
     const firstName = event.target.firstName.value.trim();
     const lastName = event.target.lastName.value.trim();
     const email = event.target.email.value.trim();
@@ -18,7 +17,6 @@ function ContactForm() {
       return;
     }
 
-    // Vérification du format de l'email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       alert("Please enter a valid email address.");
@@ -47,43 +45,43 @@ function ContactForm() {
           className="flex flex-col justify-center gap-4 p-8 w-full max-w-7xl bg-[var(--white-color)] shadow-md rounded-md border-x-2 text-[var(--secondary-color)] max-md:m-3 m-5"
           onSubmit={handleSubmit}
         >
-          <h2 id="contactFormTitle" className="text-xl font-bold mb-4 text-center" 
-          aria-labelledby="contact form">
-          Formulaire de contact
+          <h2
+            id="contactFormTitle"
+            className="text-xl font-bold mb-4 text-center"
+          >
+            Contact form
           </h2>
 
-          <label htmlFor="first-name" className="text-lg">
-          First name
+          <label htmlFor="firstName" className="text-lg">
+            First name *
           </label>
           <input
             type="text"
-            id="first-name"
-            name="first-name"
+            id="firstName"
+            name="firstName"
             className="p-2 border rounded-md"
             aria-required="true"
-            aria-label="first-name"
             pattern="[A-Za-zÀ-ÖØ-öø-ÿ '-]+"
             title="Only letters, spaces, and hyphens are allowed"
             required
           />
 
-          <label htmlFor="Name" className="text-lg">
-          Name
+          <label htmlFor="lastName" className="text-lg">
+            Last name *
           </label>
           <input
             type="text"
-            id="Name"
-            name="Name"
+            id="lastName"
+            name="lastName"
             className="p-2 border rounded-md"
             aria-required="true"
-            aria-label="name"
             pattern="[A-Za-zÀ-ÖØ-öø-ÿ '-]+"
             title="Only letters, spaces, and hyphens are allowed"
             required
           />
 
           <label htmlFor="email" className="text-lg">
-            Email
+            Email *
           </label>
           <input
             type="email"
@@ -91,47 +89,41 @@ function ContactForm() {
             name="email"
             className="p-2 border rounded-md"
             aria-required="true"
-            aria-label="Email"
             required
           />
 
           <label htmlFor="phone" className="text-lg">
-          Phone number
+            Phone number
           </label>
           <input
             type="tel"
             id="phone"
             name="phone"
             className="p-2 border rounded-md"
-            aria-required="true"
-            aria-label="phone number"
           />
 
           <label htmlFor="request" className="text-lg">
-          Please write your request here
+          Write Your Request *
           </label>
           <textarea
             id="request"
             name="request"
             className="p-2 border rounded-md"
             rows="4"
-            aria-required="true"
-            aria-label="please write your request here"
             required
           ></textarea>
 
           <button
-            type="Submit"
+            type="submit"
             className="p-2 mt-4 bg-[var(--nuance1-secondary)] text-white rounded-md hover:bg-blue-700"
-            aria-label="submit"
           >
-            Soumettre
+            Submit
           </button>
         </form>
       ) : (
         <div className="p-8 bg-white shadow-md rounded-md w-full max-w-7xl text-center">
           <h2 className="text-2xl text-[var(--secondary-color)] font-bold mb-4">
-            Thank you for your message !
+            Thank you for your message!
           </h2>
         </div>
       )}

@@ -8,10 +8,9 @@ const Scan = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigate("/gameList/168"); // Remplacez '/target-page' par la route vers laquelle vous voulez rediriger
-    }, 10000); // Délai de 3000ms (3 secondes)
+      navigate("/gameList/168");
+    }, 10000);
 
-    // Cleanup function to clear the timer if the component unmounts
     return () => clearTimeout(timer);
   }, [navigate]);
 

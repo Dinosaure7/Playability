@@ -1,5 +1,5 @@
 function CardComment({ name, comment, accessibility, inclusivity }) {
-  const globalRating = ((accessibility + inclusivity) / 2).toFixed(1); // Calcul de la moyenne avec une décimale
+  const globalRating = ((accessibility + inclusivity) / 2).toFixed(1);
 
   return (
     <section className="bg-[var(--nuance4-secondary)] flex flex-col gap-4 px-4 py-4 rounded-md">
@@ -10,29 +10,29 @@ function CardComment({ name, comment, accessibility, inclusivity }) {
       <div className="flex gap-7 md:gap-16">
         <div className="flex gap-2 items-center">
           <p className="text-xs md:text-base text-[var(--white-color)] font-normal">
-            Accessibilité
+            Accessibility
           </p>
           <p className="text-xs md:text-base text-[var(--white-color)] flex gap-1 items-center">
-            {accessibility}/10
+            {accessibility}/5
             <img className="w-3" src="/src/assets/Star.svg" alt="" />
           </p>
         </div>
         <div className="flex gap-2">
           <p className="text-xs md:text-base text-[var(--white-color)] font-normal">
-            Inclusivité
+            Inclusivity
           </p>
           <p className="text-xs md:text-base text-[var(--white-color)] flex gap-1 items-center">
-            {inclusivity}/10
+            {inclusivity}/5
             <img className="w-3" src="/src/assets/Star.svg" alt="" />
           </p>
         </div>
       </div>
       <div className="flex gap-1 md:flex-none">
         <p className="text-xs md:text-base text-[var(--white-color)] font-normal">
-          Globale
+          Global
         </p>
         <p className="text-xs md:text-base text-[var(--white-color)] flex gap-1">
-          {globalRating}/10
+          {globalRating}/5
           <img className="w-3" src="/src/assets/Star.svg" alt="" />
         </p>
       </div>

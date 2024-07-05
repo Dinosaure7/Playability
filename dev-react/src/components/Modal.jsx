@@ -1,40 +1,18 @@
-import { useCallback, useState } from "react";
-
 function Modal({
+  setFirstInput,
+  setSecondInput,
+  setThirdInput,
   firstInput,
   secondInput,
   thirdInput,
-  setFirstInput,
-  setSecondInput,
+  isModalVisible,
+  handleChangeModal,
   isModalOpen,
 }) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-  const [isClicked, setIsClicked] = useState(false);
-  const handleChangeModal = useCallback(() => {
-    setIsVisible(true);
-    if (isVisible) {
-      setTimeout(() => {
-        setIsVisible(false);
-      }, 500);
-    }
-    setTimeout(() => {
-      setIsOpen(!isOpen);
-      setIsClicked(false);
-    }, 1);
-  }, [isVisible, isOpen]);
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-  const handleChangeModal2 = useCallback(() => {
-    setIsVisible(false);
-    isVisible(false);
-  });
-  const isModalVisible = isVisible ? "block" : "hidden";
-
   return (
-    <section className={`${isModalOpen} flex flex-col items-center`}>
+    <section
+      className={`${isModalVisible} ${isModalOpen} flex flex-col items-center`}
+    >
       <section className="absolute z-50 mx-4 rounded-lg flex flex-col gap-10 px-32 py-12 bg-[var(--white-color)]">
         <h2 className="text-3xl font-medium self-center text-[var(--primary-color)]">
           Send your comment !
@@ -59,10 +37,10 @@ function Modal({
         </div>
         <div className="flex gap-10">
           <p className="text-[var(--secondary-color)] self-start">Comment</p>
-          <input
-            onChange={thirdInput}
+          <textarea
+            onChange={setThirdInput}
             value={thirdInput}
-            className="pl-4 pt-2 align-middle pb-56 pr-56 outline-[var(--nuance3-secondary)] rounded-md focus-visible:outline-[var(--nuance3-secondary)] bg-slate-300"
+            className="pl-4 pt-2 align-middle pb-56 w-72 outline-[var(--nuance3-secondary)] rounded-md focus-visible:outline-[var(--nuance3-secondary)] bg-slate-300"
             type="text"
           />
         </div>
@@ -195,9 +173,7 @@ function Modal({
           </div>
         </div>
         <button
-          onClick={useCallback(() => {
-            setIsVisible(false);
-          }, [setIsVisible])}
+          onClick={handleChangeModal}
           className="bg-[var(--primary-color)] w-24 h-10 rounded-md text-[var(--white-color)] self-center"
         >
           Publish
