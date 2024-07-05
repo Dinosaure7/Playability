@@ -1,139 +1,128 @@
+import React from "react";
+
 function Privacy() {
-    return (
-        <div className="p-4">
-        <h1 className="text-3xl font-bold mb-4">Politique de Confidentialité</h1>
-        <p>Dernière mise à jour : [04/07/2024]</p>
-  
-        <h2 className="text-2xl font-bold mt-4 mb-2">1. Introduction</h2>
-        <p>
-          Nous nous engageons à protéger la confidentialité de vos informations
-          personnelles. Cette politique de confidentialité explique comment nous
-          recueillons, utilisons et partageons vos informations lorsque vous
-          utilisez notre site web [Playability] et nos services.
-        </p>
-  
-        <h2 className="text-2xl font-bold mt-4 mb-2">
-          2. Informations que Nous Collectons
-        </h2>
-        <h3 className="text-xl font-bold mt-2 mb-2">
-          2.1. Informations que Vous Nous Fournissez
-        </h3>
-        <p>
-          Lorsque vous remplissez des formulaires ou nous contactez, nous 
-          pouvons recueillir des informations telles quevotre nom, adresse 
-          e-mail, numéro de téléphone et adresse postale.
-        </p>
-        <p>
-          <strong>Informations de Paiement</strong> : si vous effectuez des achats
-          via notre site, nous collecterons les informations nécessaires pour
-          traiter les paiements.
-        </p>
-  
-        <h3 className="text-xl font-bold mt-2 mb-2">
-          2.2. Informations que Nous Collectons Automatiquement
-        </h3>
-        <p>
-          <strong>Données de Navigation</strong> : nous pouvons collecter des
-          informations sur la façon dont vous accédez et utilisez notre site,
-          telles que votre adresse IP, votre type de navigateur, votre fournisseur
-          d'accès à Internet (FAI), les pages de renvoi/de sortie, et les
-          horodatages.
-        </p>
-        <p>
-          <strong>Cookies et Technologies Similaires</strong> : nous utilisons des
-          cookies pour améliorer votre expérience utilisateur, analyser
-          l'utilisation de notre site et personnaliser les contenus.
-        </p>
-  
-        <h2 className="text-2xl font-bold mt-4 mb-2">
-          3. Utilisation de Vos Informations
-        </h2>
-        <p>Nous utilisons vos informations pour :</p>
-        <ul className="list-disc list-inside">
-          <li>Fournir, exploiter et améliorer nos services ;</li>
-          <li>Traiter vos transactions et vous envoyer des confirmations ;</li>
-          <li>Répondre à vos questions et préoccupations ;</li>
-          <li>
-            Vous envoyer des communications marketing et promotionnelles (si vous
-            avez consenti à les recevoir) ;
-          </li>
-          <li>
-            Analyser l'utilisation de notre site et personnaliser votre
-            expérience.
-          </li>
-        </ul>
-  
-        <h2 className="text-2xl font-bold mt-4 mb-2">
-          4. Partage de Vos Informations
-        </h2>
-        <p>
-          Nous ne vendons pas vos informations personnelles à des tiers. Nous
-          pouvons partager vos informations avec des tiers de confiance, y compris
-          :
-        </p>
-        <ul className="list-disc list-inside">
-          <li>
-            <strong>Fournisseurs de Services</strong> : pour nous aider à
-            exploiter notre site et fournir nos services (par exemple, les
-            services de paiement et d'hébergement web).
-          </li>
-          <li>
-            <strong>Obligations Légales</strong> : pour se conformer aux lois ou
-            répondre à des demandes légales ou des autorités gouvernementales.
-          </li>
-        </ul>
-  
-        <h2 className="text-2xl font-bold mt-4 mb-2">
-          5. Sécurité de Vos Informations
-        </h2>
-        <p>
-          Nous mettons en œuvre des mesures de sécurité pour protéger vos
-          informations personnelles contre l'accès, l'utilisation ou la
-          divulgation non autorisés. Cependant, aucune méthode de transmission sur
-          Internet ou de stockage électronique n'est complètement sécurisée et
-          nous ne pouvons garantir une sécurité absolue.
-        </p>
-  
-        <h2 className="text-2xl font-bold mt-4 mb-2">6. Vos Droits</h2>
-        <p>
-          Selon votre juridiction, vous pouvez avoir les droits suivants
-          concernant vos informations personnelles :
-        </p>
-        <ul className="list-disc list-inside">
-          <li>
-            <strong>Accès</strong> : vous avez le droit de demander l'accès à vos
-            informations personnelles que nous détenons.
-          </li>
-          <li>
-            <strong>Rectification</strong> : vous pouvez demander la correction
-            des informations personnelles inexactes ou incomplètes.
-          </li>
-          <li>
-            <strong>Effacement</strong> : vous pouvez demander la suppression de
-            vos informations personnelles.
-          </li>
-          <li>
-            <strong>Opposition et Limitation</strong> : vous pouvez vous opposer
-            ou demander la limitation du traitement de vos informations
-            personnelles.
-          </li>
-        </ul>
-        <p>
-          Pour exercer ces droits, veuillez nous contacter à l'adresse suivante :
-          [Adresse e-mail de contact].
-        </p>
-  
-        <h2 className="text-2xl font-bold mt-4 mb-2">
-          7. Modifications de cette Politique
-        </h2>
-        <p>
-          Nous pouvons mettre à jour cette politique de confidentialité de temps
-          en temps. Nous publierons toute modification sur cette page et mettrons
-          à jour la date de "Dernière mise à jour" en haut de cette politique.
-        </p>
-      </div>
-    );
-  }
-  
-  export default Privacy;
-  
+  return (
+    <div className="p-4">
+      <h1 className="text-3xl font-bold mb-4">Privacy Policy</h1>
+      <p>Last updated: [07/04/2024]</p>
+
+      <h2 className="text-2xl font-bold mt-4 mb-2">1. Introduction</h2>
+      <p>
+        We are committed to protecting your personal information. This privacy
+        policy explains how we collect, use, and share your information when you
+        use our website [Playability] and our services.
+      </p>
+
+      <h2 className="text-2xl font-bold mt-4 mb-2">
+        2. Information We Collect
+      </h2>
+      <h3 className="text-xl font-bold mt-2 mb-2">
+        2.1. Information You Provide to Us
+      </h3>
+      <p>
+        When you fill out forms or contact us, we may collect information such
+        as your name, email address, phone number, and postal address.
+      </p>
+      <p>
+        <strong>Payment Information</strong>: if you make purchases through our
+        site, we will collect the information necessary to process payments.
+      </p>
+
+      <h3 className="text-xl font-bold mt-2 mb-2">
+        2.2. Information We Collect Automatically
+      </h3>
+      <p>
+        <strong>Browsing Data</strong>: we may collect information about how you
+        access and use our site, such as your IP address, browser type, Internet
+        Service Provider (ISP), referring/exit pages, and timestamps.
+      </p>
+      <p>
+        <strong>Cookies and Similar Technologies</strong>: we use cookies to
+        enhance your user experience, analyze site usage, and customize content.
+      </p>
+
+      <h2 className="text-2xl font-bold mt-4 mb-2">
+        3. Use of Your Information
+      </h2>
+      <p>We use your information to:</p>
+      <ul className="list-disc list-inside">
+        <li>Provide, operate, and improve our services;</li>
+        <li>Process your transactions and send you confirmations;</li>
+        <li>Respond to your inquiries and concerns;</li>
+        <li>
+          Send you marketing and promotional communications (if you have
+          consented to receive them);
+        </li>
+        <li>Analyze site usage and personalize your experience.</li>
+      </ul>
+
+      <h2 className="text-2xl font-bold mt-4 mb-2">
+        4. Sharing Your Information
+      </h2>
+      <p>
+        We do not sell your personal information to third parties. We may share
+        your information with trusted third parties, including:
+      </p>
+      <ul className="list-disc list-inside">
+        <li>
+          <strong>Service Providers</strong>: to help us operate our site and
+          provide our services (e.g., payment processing and web hosting
+          services).
+        </li>
+        <li>
+          <strong>Legal Obligations</strong>: to comply with laws or respond to
+          legal requests or governmental authorities.
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-bold mt-4 mb-2">
+        5. Security of Your Information
+      </h2>
+      <p>
+        We implement security measures to protect your personal information from
+        unauthorized access, use, or disclosure. However, no method of
+        transmission over the Internet or electronic storage is completely
+        secure, and we cannot guarantee absolute security.
+      </p>
+
+      <h2 className="text-2xl font-bold mt-4 mb-2">6. Your Rights</h2>
+      <p>
+        Depending on your jurisdiction, you may have the following rights
+        regarding your personal information:
+      </p>
+      <ul className="list-disc list-inside">
+        <li>
+          <strong>Access</strong>: you have the right to request access to your
+          personal information that we hold.
+        </li>
+        <li>
+          <strong>Correction</strong>: you may request the correction of
+          inaccurate or incomplete personal information.
+        </li>
+        <li>
+          <strong>Deletion</strong>: you may request the deletion of your
+          personal information.
+        </li>
+        <li>
+          <strong>Objection and Restriction</strong>: you may object to or
+          request the restriction of the processing of your personal
+          information.
+        </li>
+      </ul>
+      <p>
+        To exercise these rights, please contact us at: [Contact email address].
+      </p>
+
+      <h2 className="text-2xl font-bold mt-4 mb-2">
+        7. Changes to this Policy
+      </h2>
+      <p>
+        We may update this privacy policy from time to time. We will post any
+        changes on this page and update the "Last updated" date at the top of
+        this policy.
+      </p>
+    </div>
+  );
+}
+
+export default Privacy;

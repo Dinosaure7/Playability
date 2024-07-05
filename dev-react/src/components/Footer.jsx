@@ -14,7 +14,7 @@ function Footer() {
           to="/privacy"
           className="md:col-span-2 text-[var(--primary-color)] underline hover:text-[var(--primary-hover-color)]"
         >
-          Politique de confidentialité
+          Privacy policy
         </Link>
         <br />
         <a
