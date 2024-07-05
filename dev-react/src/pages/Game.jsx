@@ -1,41 +1,13 @@
 import { useLoaderData } from "react-router-dom";
 import { useState, useCallback } from "react";
 import CardComment from "../components/CardComment";
-import CardComment2 from "../components/CardComment2";
+import { reviewsUser, expertReviews } from "../service/review";
+import { useEffect } from "react";
+import GameCard from "../components/GameCard";
 import Return from "../components/Return";
-import Modal from "../components/Modal";
 
 function Game() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-  const [isClicked, setIsClicked] = useState(false);
-
-  const handleChangeModal = useCallback(() => {
-    setIsVisible(true);
-    if (isVisible) {
-      setTimeout(() => {
-        setIsVisible(false);
-      }, 500);
-    }
-    setTimeout(() => {
-      setIsOpen(!isOpen);
-      setIsClicked(false);
-    }, 1);
-  }, [isVisible, isOpen]);
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-
-  const handleClickModal = useCallback(() => {
-    setIsClicked(!isClicked);
-  }, [isClicked]);
-
-  const isModalOpen = isOpen ? "modalOpen" : "modalNotOpen";
-
-  const isModalVisible = isVisible ? "block" : "hidden";
-
-  const gameData = useLoaderData();
+  const { gameData, gameRecommendations } = useLoaderData();
   const moyenneAccess = Math.ceil(
     gameData.Controls + gameData.Navigation + gameData.Reading / 3
   );
@@ -47,17 +19,50 @@ function Game() {
   const [firstInput, setFirstInput] = useState("");
   const [secondInput, setSecondInput] = useState("");
   const [thirdInput, setThirdInput] = useState("");
+
+  const [recommendedGames, setRecommendedGames] = useState([]);
+
+  useEffect(() => {
+    const fetchRecommendedGames = async () => {
+      try {
+        // Vérifier si gameRecommendations est bien un objet JSON
+        const gameIdsObject =
+          typeof gameRecommendations === "string"
+            ? JSON.parse(gameRecommendations)
+            : gameRecommendations;
+
+        // Extraire les IDs des jeux
+        const gameIds = Object.values(gameIdsObject);
+        console.log(gameIds);
+
+        // Effectuer des requêtes fetch pour chaque ID de jeu
+        const fetchPromises = gameIds.map((id) =>
+          fetch(`${import.meta.env.VITE_API_URL}/game/${id}`, {
+            mode: "cors",
+          }) // Note: mode: 'cors' permet les requêtes cross-origin
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error(`Failed to fetch game with ID: ${id}`);
+              }
+              return response.json();
+            })
+        );
+
+        // Attendre que toutes les requêtes soient complétées
+        const games = await Promise.all(fetchPromises);
+
+        // Mettre à jour l'état avec les détails des jeux recommandés
+        setRecommendedGames(games);
+      } catch (error) {
+        console.error("Error fetching recommended games:", error);
+      }
+    };
+
+    fetchRecommendedGames();
+  }, []);
+
   return (
     <main>
-      <Modal
-        isModalOpen={isModalVisible}
-        firstInput={firstInput}
-        secondInput={secondInput}
-        thirdInput={thirdInput}
-        setFirstInput={(e) => setFirstInput(e.target.value)}
-        setSecondInput={(e) => setSecondInput(e.target.value)}
-        setThirdInput={(e) => setThirdInput(e.target.value)}
-      />
       <div className="my-5 ml-10">
         <Return />
       </div>
@@ -90,40 +95,47 @@ function Game() {
         <h2 className="text-[var(--white-color)] md:text-3xl text-xl mt-8">
           Our expert's ratings & reviews
         </h2>
-        <div className="flex justify-between mt-4 md:mt-8">
-          <p className="text-[var(--white-color)]">Overall rating</p>
-          <p className="text-[var(--white-color)] flex gap-2 md:text-xl">
-            {moyenneGlobale - 0.2}/5 <img src="/src/assets/Star.svg" alt="" />
-          </p>
-        </div>
         <div className="flex justify-between mt-2 md:mt-4">
           <p className="text-[var(--white-color)]">Accessibility note</p>
           <p className="text-[var(--white-color)] flex gap-2">
-            {moyenneAccess - 0.4}/5 <img src="/src/assets/Star.svg" alt="" />
+            {gameData["Getting Started"]}/5{" "}
+            <img src="/src/assets/Star.svg" alt="" />
           </p>
         </div>
         <div className="flex justify-between mt-2 md:mt-4">
           <p className="text-[var(--white-color)]">Inclusivity score</p>
           <p className="text-[var(--white-color)] flex gap-2">
-            {moyenneInclude + 0.3}/5
+            {gameData.Navigation}/5
             <img src="/src/assets/Star.svg" alt="" />
+          </p>
+        </div>
+        <div className="flex justify-between mt-4 md:mt-8">
+          <p className="text-[var(--white-color)]">Overall rating</p>
+          <p className="text-[var(--white-color)] flex gap-2 md:text-xl">
+            {((gameData["Getting Started"] + gameData.Navigation) / 2).toFixed(
+              2
+            )}
+            /5 <img src="/src/assets/Star.svg" alt="" />
           </p>
         </div>
       </section>
       <div className="mb-10 px-10 mt-10 flex gap-8 overflow-scroll no-scrollbar">
-        <CardComment />
-        <CardComment />
-        <CardComment />
+        {expertReviews.map((review, index) => (
+          <CardComment
+            key={index}
+            name={review.name}
+            comment={review.comment}
+            accessibility={review.accessibility}
+            inclusivity={review.inclusivity}
+          />
+        ))}
       </div>
       <div class="w-4/5 mx-auto my-4 border-t border-[var(--nuance3-secondary)]"></div>
       <section className="mx-10">
         <h2 className="text-[var(--white-color)] text-xl mt-8 inline">
           User ratings & reviews
         </h2>
-        <button
-          onClick={handleChangeModal}
-          className="bg-[var(--primary-color)] font-medium rounded-lg hover:bg-[var(--primary-hover-color)] transition-all ease-in-out ml-10 p-2 inline text-[var(--white-color)]"
-        >
+        <button className="bg-[var(--primary-color)] font-medium rounded-lg hover:bg-[var(--primary-hover-color)] transition-all ease-in-out ml-10 p-2 inline text-[var(--white-color)]">
           Share your opinion
         </button>
         <div className="flex justify-between mt-4">
@@ -135,25 +147,44 @@ function Game() {
         <div className="flex justify-between mt-2">
           <p className="text-[var(--white-color)]">Accessibility note</p>
           <p className="text-[var(--white-color)] flex gap-2">
-            {moyenneAccess - 0.2}/5 <img src="/src/assets/Star.svg" alt="" />
+            {gameData.Reading}/5 <img src="/src/assets/Star.svg" alt="" />
           </p>
         </div>
         <div className="flex justify-between mt-2">
           <p className="text-[var(--white-color)]">Inclusivity score</p>
           <p className="text-[var(--white-color)] flex gap-2">
-            {moyenneInclude + 0.1}/5 <img src="/src/assets/Star.svg" alt="" />
+            {gameData.Audio}/5 <img src="/src/assets/Star.svg" alt="" />
+          </p>
+        </div>
+        <div className="flex justify-between mt-4">
+          <p className="text-[var(--white-color)]">Overall rating</p>
+          <p className="text-[var(--white-color)] flex gap-2">
+            {((gameData.Audio + gameData.Reading) / 2).toFixed(2)}/5{" "}
+            <img src="/src/assets/Star.svg" alt="" />
           </p>
         </div>
       </section>
       <div className="mb-10 px-10 mt-10 flex gap-8 overflow-x-scroll no-scrollbar">
-        <CardComment />
-        <CardComment />
-        <CardComment2
-          firstname={firstInput}
-          lastname={secondInput}
-          comment={thirdInput}
-        />
+        {reviewsUser.map((review, index) => (
+          <CardComment
+            key={index}
+            name={review.name}
+            comment={review.comment}
+            accessibility={review.accessibility}
+            inclusivity={review.inclusivity}
+          />
+        ))}
       </div>
+      <div className="mb-2 px-10 mt-2 gap-8">
+        <h2 className="text-[var(--white-color)] md:text-xl text-l font-medium">
+          Similar games
+        </h2>
+      </div>
+      <section className="flex flex-wrap justify-center overflow-x-scroll no-scrollbar">
+        {recommendedGames.map((gameData) => (
+          <GameCard gameData={gameData} />
+        ))}
+      </section>
     </main>
   );
 }
