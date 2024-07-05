@@ -11,7 +11,7 @@ function GameCard({ gameData }) {
   }
 
   // Vérifier la longueur du titre du jeu
-  const isLongTitle = Game.length > 30;
+  const isLongTitle = Game.length > 32;
 
   // Limiter le résumé à 150 caractères ou 100 caractères selon la longueur du titre
   const maxSummaryLength = isLongTitle ? 100 : 150;

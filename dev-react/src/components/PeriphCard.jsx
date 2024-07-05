@@ -4,7 +4,7 @@ import truncateText from "../service/delgorithm";
 // import imageController from `../assets/image-controller`;
 // import "../assets/image-controller";
 import img1 from "../assets/image-controller/xbox.jpg";
-import img2 from "../assets/image-controller/sony.jpg";
+import img2 from "../assets/image-controller/sonyv2.png";
 import img3 from "../assets/image-controller/logi.png";
 import img4 from "../assets/image-controller/quadstick.png";
 import img5 from "../assets/image-controller/tobii.jpg";
@@ -50,7 +50,7 @@ function PeriphCard({ controller }) {
     // const imagePath = require(`../assets/image-controller/${src}`).default;
     const imagePath = getImageById(id);
 
-  const isLongName = name.length > 30;
+  const isLongName = name.length > 32;
 
   const maxDescriptionLength = isLongName ? 100 : 150;
   const truncatedDescription = description
