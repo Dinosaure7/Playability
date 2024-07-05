@@ -113,7 +113,7 @@ def recommande_game(ind):
             return super(NpEncoder, self).default(obj)
 
     dict_game = {}
-    X = game_df.drop(['Game','Summary','Rating','Genres','Platforms','Companies','Cover','Video'],axis=1)
+    X = game_df.drop(['ID','Game','Summary','Rating','Genres','Platforms','Companies','Cover','Video'],axis=1)
     knn = NearestNeighbors(n_neighbors=4)
     knn.fit(X)
     distances, indices = knn.kneighbors(X)
