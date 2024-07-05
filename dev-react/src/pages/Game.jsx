@@ -1,9 +1,40 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
+import { useState, useCallback } from "react";
 import CardComment from "../components/CardComment";
+import CardComment2 from "../components/CardComment2";
 import Return from "../components/Return";
 import Modal from "../components/Modal";
 
 function Game() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleChangeModal = useCallback(() => {
+    setIsVisible(true);
+    if (isVisible) {
+      setTimeout(() => {
+        setIsVisible(false);
+      }, 500);
+    }
+    setTimeout(() => {
+      setIsOpen(!isOpen);
+      setIsClicked(false);
+    }, 1);
+  }, [isVisible, isOpen]);
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+
+  const handleClickModal = useCallback(() => {
+    setIsClicked(!isClicked);
+  }, [isClicked]);
+
+  const isModalOpen = isOpen ? "modalOpen" : "modalNotOpen";
+
+  const isModalVisible = isVisible ? "block" : "hidden";
+
   const gameData = useLoaderData();
   const moyenneAccess = Math.ceil(
     gameData.Controls + gameData.Navigation + gameData.Reading / 3
@@ -12,9 +43,21 @@ function Game() {
   const moyenneGlobale = Math.ceil(moyenneAccess + moyenneInclude / 2);
 
   console.log(gameData);
+
+  const [firstInput, setFirstInput] = useState("");
+  const [secondInput, setSecondInput] = useState("");
+  const [thirdInput, setThirdInput] = useState("");
   return (
     <main>
-      <Modal />
+      <Modal
+        isModalOpen={isModalVisible}
+        firstInput={firstInput}
+        secondInput={secondInput}
+        thirdInput={thirdInput}
+        setFirstInput={(e) => setFirstInput(e.target.value)}
+        setSecondInput={(e) => setSecondInput(e.target.value)}
+        setThirdInput={(e) => setThirdInput(e.target.value)}
+      />
       <div className="my-5 ml-10">
         <Return />
       </div>
@@ -77,7 +120,10 @@ function Game() {
         <h2 className="text-[var(--white-color)] text-xl mt-8 inline">
           User ratings & reviews
         </h2>
-        <button className="bg-[var(--primary-color)] font-medium rounded-lg hover:bg-[var(--primary-hover-color)] transition-all ease-in-out ml-10 p-2 inline text-[var(--white-color)]">
+        <button
+          onClick={handleChangeModal}
+          className="bg-[var(--primary-color)] font-medium rounded-lg hover:bg-[var(--primary-hover-color)] transition-all ease-in-out ml-10 p-2 inline text-[var(--white-color)]"
+        >
           Share your opinion
         </button>
         <div className="flex justify-between mt-4">
@@ -102,7 +148,11 @@ function Game() {
       <div className="mb-10 px-10 mt-10 flex gap-8 overflow-x-scroll no-scrollbar">
         <CardComment />
         <CardComment />
-        <CardComment />
+        <CardComment2
+          firstname={firstInput}
+          lastname={secondInput}
+          comment={thirdInput}
+        />
       </div>
     </main>
   );
